@@ -1,0 +1,413 @@
+<title>The Visible Method · You're In</title>
+
+<!--
+  ============================================================================
+  THE VISIBLE METHOD  ·  WORKSHOP CONFIRMATION / THANK YOU PAGE
+  ============================================================================
+  This page loads AFTER someone registers for the free workshop.
+  It does two jobs:
+    1. Action steps  ...  get them into the group, on the calendar, holding the Zoom link.
+    2. Social proof  ...  client transformations to keep them warm until workshop day.
+
+  >>> ADDING MORE CLIENT TRANSFORMATIONS <<<
+  Scroll to the section marked "TRANSFORMATIONS". Full copy-paste instructions
+  are in the comment there. You do not need to touch any CSS. Just duplicate one
+  <article class="xform"> ... </article> block and fill in the blanks.
+  ============================================================================
+-->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --green:#14271C;
+    --navy:#14271C;
+    --paper:#FFFFFF;
+    --cream:#FFFFFF;
+    --ink:#2B1E16;
+    --butter:#E4CD8F;
+
+    --display:"Playfair Display",Georgia,"Times New Roman",serif;
+    --sans:-apple-system,BlinkMacSystemFont,"Segoe UI","Helvetica Neue",Arial,sans-serif;
+
+    --pad:clamp(20px,5vw,64px);
+    --maxw:1120px;
+  }
+
+  /* Single-theme by intent: the wine and paper pairing is the brand and must carry
+     across the whole funnel. */
+  html,body{background:#FFFFFF;}
+  html{scroll-behavior:smooth;}
+  @media (prefers-reduced-motion:reduce){ html{scroll-behavior:auto;} }
+
+  .vm{
+    background:#FFFFFF;color:var(--ink);
+    font-family:var(--sans);font-size:18px;line-height:1.66;
+    -webkit-font-smoothing:antialiased;overflow-x:hidden;
+    --fg:var(--ink);--fg-dim:rgba(43,30,22,.95);--fg-faint:rgba(43,30,22,.72);
+    --line:rgba(43,30,22,.16);
+  }
+  .vm *{box-sizing:border-box;}
+  .vm p{margin:0;}
+  .vm h1,.vm h2,.vm h3{margin:0;font-weight:500;text-wrap:balance;}
+
+  .wrap{max-width:var(--maxw);margin:0 auto;padding-left:var(--pad);padding-right:var(--pad);}
+  .display{font-family:var(--display);font-weight:500;line-height:1.02;letter-spacing:-.015em;}
+  .display em{font-style:italic;}
+  .lede{font-size:clamp(16.5px,1.3vw,19px);line-height:1.72;color:var(--fg-dim);}
+  .eyebrow{font-size:11.5px;letter-spacing:.22em;text-transform:uppercase;font-weight:700;color:var(--fg-faint);}
+
+  /* ---------- header / hero ---------- */
+  .top{text-align:center;padding:clamp(28px,4vw,48px) 0 0;}
+  .mark{font-size:11.5px;letter-spacing:.26em;text-transform:uppercase;font-weight:700;color:var(--fg-dim);}
+
+  .badge{
+    margin:clamp(26px,4vw,44px) auto 0;max-width:860px;
+    background:transparent;color:var(--ink);padding:0;
+  }
+  .badge .k{font-size:13px;letter-spacing:.2em;text-transform:uppercase;font-weight:700;color:#4E1D1B;}
+  .badge h1{font-family:var(--display);font-size:clamp(38px,5.6vw,74px);line-height:1.04;margin-top:14px;color:var(--ink);}
+  .badge h1 em{font-style:italic;}
+  .badge p{margin-top:16px;font-size:15px;line-height:1.7;color:rgba(43,30,22,.7);max-width:52ch;margin-left:auto;margin-right:auto;}
+  .badge .when{
+    margin-top:22px;display:inline-flex;flex-wrap:wrap;gap:8px 22px;justify-content:center;
+    border-top:1px solid rgba(43,30,22,.14);padding-top:20px;
+    font-size:13px;font-weight:600;letter-spacing:.02em;color:var(--ink);
+  }
+  .badge .when span{color:rgba(43,30,22,.5);font-weight:400;}
+
+  /* ---------- action steps ---------- */
+  .steps-sec{padding:clamp(48px,7vw,88px) 0 clamp(30px,4vw,50px);text-align:center;}
+  .steps-sec h2{font-family:var(--display);font-size:clamp(26px,3.4vw,44px);line-height:1.06;}
+  .steps-sec .sub{margin-top:12px;}
+  .steps{margin-top:clamp(30px,4vw,48px);display:grid;gap:14px;text-align:left;}
+  .step{
+    display:grid;grid-template-columns:auto 1fr auto;gap:clamp(16px,3vw,32px);align-items:center;
+    border:1px solid var(--line);padding:clamp(20px,2.6vw,30px);
+  }
+  .step .no{font-family:var(--display);font-size:clamp(28px,3.4vw,44px);line-height:1;color:#4E1D1B;min-width:64px;}
+  .step .txt .t{font-weight:700;font-size:clamp(15px,1.4vw,18px);}
+  .step .txt .d{font-size:15px;color:var(--fg-dim);margin-top:5px;line-height:1.55;}
+  .step-cta{
+    display:inline-flex;align-items:center;justify-content:center;gap:9px;white-space:nowrap;
+    background:var(--cream);color:var(--green);text-decoration:none;
+    font-family:var(--sans);font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
+    padding:16px 26px;min-height:52px;border:0;border-radius:999px;cursor:pointer;
+    transition:background .25s ease,transform .25s ease;
+  }
+  .step-cta:hover{background:#fff;transform:translateY(-1px);}
+  .step-cta:focus-visible{outline:2px solid var(--cream);outline-offset:3px;}
+  .step-cta.ghost{background:transparent;color:var(--ink);border:1px solid rgba(43,30,22,.4);}
+  .step-cta.ghost:hover{background:rgba(20,39,28,.06);}
+
+  /* ---------- transformations ---------- */
+  .xforms-sec{padding:clamp(48px,7vw,90px) 0 clamp(30px,4vw,40px);}
+  .xforms-head{text-align:center;max-width:60ch;margin:0 auto;}
+  .xforms-head h2{font-family:var(--display);font-size:clamp(28px,3.8vw,52px);line-height:1.04;margin-top:16px;}
+  .xforms-head h2 em{font-style:italic;color:#4E1D1B;}
+  .xforms-head .sub{margin-top:16px;}
+
+  .xform-grid{
+    margin-top:clamp(34px,4.5vw,60px);
+    display:grid;grid-template-columns:repeat(2,1fr);gap:clamp(18px,2.5vw,28px);
+  }
+
+  .xform{
+    background:#FFFFFF;color:var(--ink);position:relative;
+    border:1px solid rgba(43,30,22,.35);
+    --fg:var(--ink);--fg-dim:rgba(43,30,22,.95);--fg-faint:rgba(43,30,22,.72);--line:rgba(43,30,22,.14);
+    padding:clamp(30px,3.6vw,44px);display:flex;flex-direction:column;
+  }
+  .xform::before{content:"";position:absolute;inset:8px;border:4px double #C9A96A;pointer-events:none;}
+  .xform::after{content:"";position:absolute;inset:16px;border:1px solid rgba(201,169,106,.5);pointer-events:none;}
+  .xform > *{position:relative;z-index:1;}
+  .xform-head .who{font-weight:800;font-size:clamp(17px,1.7vw,21px);color:var(--ink);}
+  .xform-head .role{font-size:12px;letter-spacing:.02em;color:var(--fg-faint);margin-top:4px;}
+
+  .ba{margin-top:20px;display:grid;gap:14px;}
+  .ba-block{border-left:2px solid var(--line);padding-left:16px;}
+  .ba-block.after{border-left-color:var(--butter);}
+  .ba-tag{font-size:11px;letter-spacing:.18em;text-transform:uppercase;font-weight:600;font-weight:700;color:var(--fg-faint);}
+  .ba-tag.is-after{color:#4E1D1B;}
+  .ba-block p{font-size:15.5px;line-height:1.622;color:var(--fg-dim);margin-top:7px;}
+
+  /* screenshot slot: drop the client's proof image in here */
+  .shot{
+    margin:20px 0 0;border:1px solid var(--line);background:rgba(43,30,22,.04);
+    aspect-ratio:16/10;display:flex;align-items:center;justify-content:center;text-align:center;
+    color:var(--fg-faint);font-size:10px;letter-spacing:.16em;text-transform:uppercase;line-height:1.8;padding:16px;
+    overflow:hidden;
+  }
+  .shot img{width:100%;height:100%;object-fit:cover;display:block;}
+
+  .xform blockquote{
+    margin:18px 0 0;font-family:var(--display);font-style:italic;
+    font-size:clamp(16px,1.6vw,19px);line-height:1.35;color:var(--ink);
+  }
+
+  /* the empty template card, so a non-technical editor can see the skeleton */
+  .xform.template{
+    background:transparent;color:var(--ink);
+    --fg:var(--ink);--fg-dim:rgba(43,30,22,.95);--fg-faint:rgba(43,30,22,.72);--line:rgba(43,30,22,.2);
+    border:1px dashed rgba(43,30,22,.4);
+  }
+  .xform.template .flag{
+    font-size:11.5px;letter-spacing:.18em;text-transform:uppercase;font-weight:700;color:#4E1D1B;
+    margin-bottom:14px;
+  }
+  .xform.template .shot{background:rgba(20,39,28,.05);}
+
+  /* ---------- final cta ---------- */
+  .close{padding:clamp(44px,6vw,80px) 0 clamp(20px,3vw,30px);text-align:center;}
+  .close h2{font-family:var(--display);font-size:clamp(28px,3.6vw,50px);line-height:1.04;}
+  .close h2 em{font-style:italic;color:#4E1D1B;}
+  .close .lede{margin:16px auto 0;max-width:46ch;}
+  .close .cta{
+    display:inline-flex;align-items:center;justify-content:center;gap:10px;margin-top:clamp(24px,3vw,34px);
+    background:var(--cream);color:var(--green);text-decoration:none;
+    font-family:var(--sans);font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;
+    padding:18px 34px;min-height:56px;border:0;border-radius:999px;cursor:pointer;
+    transition:background .25s ease,transform .25s ease;
+  }
+  .close .cta:hover{background:#fff;transform:translateY(-1px);}
+  .close .cta:focus-visible{outline:2px solid var(--cream);outline-offset:3px;}
+
+  /* ---------- footer ---------- */
+  footer.vm-foot{margin-top:clamp(44px,6vw,80px);padding:0 0 56px;text-align:center;display:grid;gap:18px;justify-items:center;}
+  .foot-rule{width:100%;display:flex;align-items:center;gap:18px;margin-bottom:26px;}
+  .foot-rule::before,.foot-rule::after{content:"";flex:1;height:1px;background:rgba(43,30,22,.2);}
+  .foot-rule span{font-family:var(--display);font-style:italic;font-size:15px;color:#C9A96A;letter-spacing:.04em;}
+  .foot-mark{font-family:var(--display);font-size:clamp(20px,2vw,26px);letter-spacing:.02em;color:var(--ink);}
+  .disclaim{margin:0 auto;font-size:13px;line-height:1.75;color:rgba(43,30,22,.6);max-width:72ch;text-align:center;}
+  .foot-links{margin-top:0;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--fg-faint);}
+  .foot-links a{color:var(--fg-faint);text-decoration:none;}
+  .foot-links a:hover{color:var(--fg-dim);}
+
+  @media (prefers-reduced-motion:reduce){
+    .step-cta,.close .cta{transition:none;}
+  }
+  @media (max-width:820px){
+    .xform-grid{grid-template-columns:1fr;}
+  }
+  @media (max-width:640px){
+    .step{grid-template-columns:auto 1fr;grid-row-gap:16px;}
+    .step .step-cta{grid-column:1 / -1;width:100%;}
+    .vm{font-size:16px;}
+    .badge h1{font-size:clamp(32px,9.5vw,42px);}
+    .badge .when{gap:6px 16px;font-size:12px;}
+    .step{padding:18px 16px;}
+    .step .no{min-width:40px;font-size:26px;}
+    .xform{padding:24px 18px;}
+    .xform::before{inset:6px;border-width:3px;}
+    .xform::after{inset:12px;}
+    .close .cta{width:100%;}
+  }
+</style>
+
+<div class="vm">
+
+  <!-- ============ hero / confirmation ============ -->
+  <section class="top">
+    <div class="wrap">
+      <div class="mark">The Visible Method</div>
+
+      <div class="badge">
+        <div class="k">You're registered</div>
+        <h1 class="display">Your seat is saved. <em>Now let's make it count.</em></h1>
+        <p>A confirmation is on its way to your inbox. Before you close this tab, there are three quick things that lock your spot in and make sure you actually show up.</p>
+        <div class="when">
+          <div><span>When</span> &nbsp;August 11 · 12 PM PT / 3 PM ET</div>
+          <div><span>Where</span> &nbsp;Live on Zoom</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ action steps ============ -->
+  <section class="steps-sec">
+    <div class="wrap">
+      <div class="eyebrow">Before you close this page</div>
+      <h2 class="display">Three steps to lock in your seat</h2>
+      <p class="lede sub">Ninety seconds now saves you missing the room later.</p>
+
+      <div class="steps">
+        <!-- STEP 1 -->
+        <div class="step">
+          <div class="no">1</div>
+          <div class="txt">
+            <div class="t">Join the private group</div>
+            <div class="d">This is where I share the prep, drop early pieces of the workshop, and send the link if email lets you down. Do this one first.</div>
+          </div>
+          <a class="step-cta" href="#" data-link="group">Join the group</a>
+        </div>
+
+        <!-- STEP 2 -->
+        <div class="step">
+          <div class="no">2</div>
+          <div class="txt">
+            <div class="t">Add the workshop to your calendar</div>
+            <div class="d">One tap so August 11 doesn't sneak up on you. You'll get a reminder before we go live.</div>
+          </div>
+          <a class="step-cta ghost" href="#" data-link="calendar">Add to calendar</a>
+        </div>
+
+        <!-- STEP 3 -->
+        <div class="step">
+          <div class="no">3</div>
+          <div class="txt">
+            <div class="t">Check your email for the Zoom link</div>
+            <div class="d">Your confirmation has the link to join. Add it to a folder you'll find, or just keep it starred.</div>
+          </div>
+          <a class="step-cta ghost" href="#" data-link="email">Open my email</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       TRANSFORMATIONS  ·  CLIENT PROOF
+       ==========================================================================
+       >>> HOW TO ADD ANOTHER TRANSFORMATION <<<
+       1. Copy ONE full block from <article class="xform"> down to </article>.
+       2. Paste it inside <div class="xform-grid"> next to the others.
+       3. Change five things:
+            - .who     = client's name
+            - .role    = one short line on who they are
+            - BEFORE   = the stuck feeling, in her words
+            - AFTER    = what changed
+            - .shot    = the screenshot (see the note inside .shot on how to drop an image)
+       4. The blockquote is optional. Delete the whole <blockquote> line if you don't have a quote.
+       5. Cards auto-arrange in two columns and stack on phones. You never touch the CSS.
+       6. DELETE the last card (the dashed "TEMPLATE" one) before this page goes live.
+       ========================================================================== -->
+  <section class="xforms-sec">
+    <div class="wrap">
+      <div class="xforms-head">
+        <div class="eyebrow">While you wait</div>
+        <h2 class="display">Women who stopped hiding, and <em>what changed</em></h2>
+        <p class="lede sub">Real before-and-afters from women who found their three stories and started telling them. Yours could be on this page next.</p>
+      </div>
+
+      <div class="xform-grid">
+
+        <!-- CASE STUDY 1  (replace placeholder content with a real client) -->
+        <article class="xform">
+          <div class="xform-head">
+            <div class="who">[ Client name ]</div>
+            <div class="role">[ e.g. Corporate exec building her own brand ]</div>
+          </div>
+          <div class="ba">
+            <div class="ba-block">
+              <div class="ba-tag">Before</div>
+              <p>Posting for two years, a few hundred followers, and nobody who landed on her page could tell what she actually did.</p>
+            </div>
+            <div class="ba-block after">
+              <div class="ba-tag is-after">After</div>
+              <p>Picked her three stories, posted the first one, and had her first inbound conversation within a fortnight.</p>
+            </div>
+          </div>
+          <figure class="shot">
+            <!-- Drop the proof screenshot here. Replace this whole line with:
+                 <img src="path-or-URL-to-image.png" alt="Client win screenshot"> -->
+            Screenshot slot<br>DM, comment, or result
+          </figure>
+          <blockquote>"I finally sound like myself."</blockquote>
+        </article>
+        <!-- /CASE STUDY 1 -->
+
+        <!-- CASE STUDY 2 -->
+        <article class="xform">
+          <div class="xform-head">
+            <div class="who">[ Client name ]</div>
+            <div class="role">[ who they are, one line ]</div>
+          </div>
+          <div class="ba">
+            <div class="ba-block">
+              <div class="ba-tag">Before</div>
+              <p>Could talk to a camera all day, but froze on which of her own stories were worth telling.</p>
+            </div>
+            <div class="ba-block after">
+              <div class="ba-tag is-after">After</div>
+              <p>Left the workshop with a month of content and posted every week since without second-guessing.</p>
+            </div>
+          </div>
+          <figure class="shot">
+            Screenshot slot<br>DM, comment, or result
+          </figure>
+          <blockquote>"The overthinking just stopped."</blockquote>
+        </article>
+        <!-- /CASE STUDY 2 -->
+
+        <!-- CASE STUDY 3 -->
+        <article class="xform">
+          <div class="xform-head">
+            <div class="who">[ Client name ]</div>
+            <div class="role">[ who they are, one line ]</div>
+          </div>
+          <div class="ba">
+            <div class="ba-block">
+              <div class="ba-tag">Before</div>
+              <p>An audience that had nothing to do with the work she was proud of. Lots of followers, no fit.</p>
+            </div>
+            <div class="ba-block after">
+              <div class="ba-tag is-after">After</div>
+              <p>Repositioned around her real story and started drawing the exact women she wanted to work with.</p>
+            </div>
+          </div>
+          <figure class="shot">
+            Screenshot slot<br>DM, comment, or result
+          </figure>
+          <!-- no quote on this one, so the blockquote line is simply removed -->
+        </article>
+        <!-- /CASE STUDY 3 -->
+
+        <!-- ================= TEMPLATE CARD =================
+             This dashed card is a visual guide only.
+             Copy the block above (CASE STUDY 1) to make a real one.
+             DELETE this whole <article class="xform template"> block before going live.
+             ================================================= -->
+        <article class="xform template">
+          <div class="flag">Template · duplicate a card above, then delete this one</div>
+          <div class="xform-head">
+            <div class="who">Client name</div>
+            <div class="role">One line on who they are</div>
+          </div>
+          <div class="ba">
+            <div class="ba-block">
+              <div class="ba-tag">Before</div>
+              <p>The stuck feeling, written the way she'd say it.</p>
+            </div>
+            <div class="ba-block after">
+              <div class="ba-tag is-after">After</div>
+              <p>What changed once she found her three stories.</p>
+            </div>
+          </div>
+          <figure class="shot">Drop screenshot here</figure>
+          <blockquote>"Optional one-line quote."</blockquote>
+        </article>
+        <!-- /TEMPLATE CARD -->
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ close ============ -->
+  <section class="close">
+    <div class="wrap">
+      <div class="eyebrow">See you there</div>
+      <h2 class="display" style="margin-top:14px;">One thing before <em>August 11.</em></h2>
+      <p class="lede">Jump in the group and tell me the one thing that stops you from posting. I read every one, and I build the workshop around the answers.</p>
+      <a class="cta" href="#" data-link="group">Go to the group &#8594;</a>
+    </div>
+
+    <footer class="vm-foot">
+      <div class="foot-rule" aria-hidden="true"><span>see you on August 11</span></div>
+      <div class="foot-mark">The Visible Method</div>
+      <p class="disclaim">Hosted by Jamie Gabrielle. This site is not part of the Instagram or Facebook websites, or Meta Platforms, Inc. It is not endorsed by Meta in any way. Any results shown are the clients' own and are not a promise of your results.</p>
+      <p class="foot-links"><a href="#">Privacy</a> &nbsp;·&nbsp; <a href="#">Terms</a> &nbsp;·&nbsp; &copy; 2026 The Visible Method</p>
+    </footer>
+  </section>
+
+</div>

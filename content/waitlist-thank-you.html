@@ -1,0 +1,205 @@
+<title>The Visible Method · You're on the list</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --green:#14271C;
+    --navy:#14271C;
+    --paper:#FFFFFF;
+    --cream:#FFFFFF;
+    --ink:#2B1E16;
+
+    --fg:var(--ink);
+    --fg-dim:rgba(43,30,22,.95);
+    --fg-faint:rgba(43,30,22,.72);
+    --line:rgba(43,30,22,.16);
+
+    --display:"Playfair Display",Georgia,"Times New Roman",serif;
+    --sans:-apple-system,BlinkMacSystemFont,"Segoe UI","Helvetica Neue",Arial,sans-serif;
+  }
+
+  /* Single-theme by intent: the wine ground is the brand and carries across
+     the ad, the waitlist, this page and the workshop page. */
+  html,body{background:#FFFFFF;}
+
+  .vm{
+    background:#FFFFFF;color:var(--fg);
+    font-family:var(--sans);font-size:18px;line-height:1.66;
+    -webkit-font-smoothing:antialiased;overflow-x:hidden;
+    min-height:100vh;display:block;
+  }
+  .vm *{box-sizing:border-box;}
+  .vm p{margin:0;}
+  .vm h1,.vm h2{margin:0;font-weight:500;text-wrap:balance;}
+
+  .panel{
+    display:flex;flex-direction:column;align-items:center;text-align:center;
+    padding:clamp(28px,4vw,56px) clamp(24px,4.5vw,72px) clamp(40px,5vw,64px);
+  }
+  .mark{font-size:11.5px;letter-spacing:.26em;text-transform:uppercase;font-weight:700;}
+
+  .middle{padding:clamp(30px,5vw,56px) 0 0;max-width:760px;margin:0 auto;display:flex;flex-direction:column;align-items:center;}
+
+  .kicker{
+    display:flex;align-items:center;justify-content:center;gap:12px;color:#4E1D1B;
+    font-size:13px;letter-spacing:.22em;text-transform:uppercase;font-weight:700;
+    margin-bottom:clamp(20px,3vw,32px);
+  }
+  .kicker .dot{width:5px;height:5px;background:currentColor;border-radius:50%;flex:none;}
+
+  h1{
+    font-family:var(--display);line-height:1.0;letter-spacing:-.015em;
+    font-size:clamp(38px,5.6vw,76px);
+  }
+  h1 em{font-style:italic;}
+
+  .sub{margin-top:clamp(18px,2.4vw,28px);max-width:52ch;margin-left:auto;margin-right:auto;}
+  .sub p{font-size:clamp(16.5px,1.3vw,19px);line-height:1.7;color:var(--fg-dim);}
+
+  /* ---------- primary action ---------- */
+  .card{
+    margin-top:clamp(28px,3.6vw,42px);width:100%;text-align:left;
+    background:var(--paper);color:var(--ink);
+    padding:clamp(26px,3.2vw,38px);max-width:none;
+  }
+  .card .k{font-size:11px;letter-spacing:.18em;text-transform:uppercase;font-weight:600;color:rgba(43,30,22,.72);}
+  .card h2{font-family:var(--display);font-size:clamp(22px,2.4vw,30px);line-height:1.16;margin-top:12px;}
+  .card p{font-size:15.5px;line-height:1.7;color:rgba(43,30,22,.95);margin-top:12px;}
+
+  .btn{
+    display:flex;align-items:center;justify-content:center;gap:12px;width:100%;
+    font-family:var(--sans);font-size:11px;font-weight:700;
+    letter-spacing:.18em;text-transform:uppercase;
+    padding:19px;min-height:56px;border:0;border-radius:999px;cursor:pointer;
+    text-decoration:none;
+    background:var(--green);color:var(--cream);
+    transition:background .25s ease,transform .25s ease;
+    margin-top:22px;
+  }
+  .btn:hover{background:#1F3A2B;transform:translateY(-1px);}
+  .btn:focus-visible{outline:2px solid var(--green);outline-offset:3px;}
+  .btn .arw{transition:transform .25s ease;}
+  .btn:hover .arw{transform:translateX(4px);}
+
+  .after{margin-top:16px;font-size:13.5px;line-height:1.7;color:rgba(43,30,22,.62);}
+
+  /* ---------- secondary action ---------- */
+  .share{
+    margin-top:clamp(26px,3.2vw,38px);width:100%;text-align:left;
+    border-top:1px solid var(--line);padding-top:clamp(22px,2.6vw,28px);
+    max-width:none;
+  }
+  .share .k{font-size:11px;letter-spacing:.18em;text-transform:uppercase;font-weight:600;color:var(--fg-faint);}
+  .share p{font-size:15.5px;line-height:1.7;color:var(--fg-dim);margin-top:12px;}
+  .share .row{display:flex;gap:12px;align-items:stretch;margin-top:18px;flex-wrap:wrap;}
+  .share input{
+    flex:1 1 220px;min-width:0;background:transparent;border:1px solid var(--line);
+    color:var(--fg-dim);font-family:var(--sans);font-size:13px;padding:14px;border-radius:0;
+  }
+  .copy{
+    flex:0 0 auto;background:transparent;border:1px solid var(--line);color:var(--fg);
+    font-family:var(--sans);font-size:10px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;
+    padding:14px 22px;cursor:pointer;border-radius:0;
+    transition:background .2s ease,color .2s ease;
+  }
+  .copy:hover{background:var(--green);color:#FFFFFF;}
+  .copy:focus-visible{outline:2px solid var(--cream);outline-offset:3px;}
+
+  .foot{margin-top:clamp(28px,4vw,44px);text-align:center;font-size:11px;letter-spacing:.05em;color:var(--fg-faint);line-height:1.7;max-width:52ch;}
+
+  /* ---------- right panel ---------- */
+  .art{
+    background:var(--green);border-top:1px solid var(--line);
+    min-height:0;height:min(62vh,640px);padding:0;position:relative;overflow:hidden;
+  }
+  .art .artimg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;}
+  .art .frame{position:absolute;inset:clamp(20px,3vw,44px);border:1px solid var(--line);pointer-events:none;z-index:2;}
+  .art .ph{text-align:center;color:var(--fg-faint);font-size:10px;letter-spacing:.2em;text-transform:uppercase;line-height:1.9;}
+
+  @media (max-width:900px){
+    .vm{grid-template-columns:1fr;min-height:0;}
+    .panel{min-height:0;padding-bottom:clamp(36px,7vw,56px);}
+    .art{min-height:38vh;border-left:0;border-top:1px solid var(--line);}
+    .middle{padding:clamp(30px,7vw,56px) 0;}
+    .card,.share{max-width:none;}
+  }
+  @media (max-width:640px){
+    .vm{font-size:16px;}
+    .panel{padding-left:20px;padding-right:20px;}
+    h1{font-size:clamp(32px,9.5vw,42px);}
+    .card{padding:24px 20px;}
+    .share .row{flex-direction:column;}
+    .share input{flex:1 1 auto;width:100%;}
+    .copy{width:100%;padding:15px;}
+    .art{height:46vh;}
+  }
+  @media (prefers-reduced-motion:reduce){
+    .btn,.btn .arw,.copy{transition:none;}
+  }
+</style>
+
+<div class="vm">
+
+  <div class="panel">
+    <div class="mark">The Visible Method</div>
+
+    <div class="middle">
+      <div class="kicker"><span class="dot"></span> Private workshop · Waitlist</div>
+
+      <h1>Now we fix the <em>second part.</em></h1>
+
+      <div class="sub">
+        <p>Your seat is held. When registration opens, you'll get a text before it goes public.</p>
+      </div>
+
+      <div class="card">
+        <div class="k">Do this now</div>
+        <h2>The group is where this actually starts.</h2>
+        <p>It's where I'll share what I'm building, drop pieces of the workshop early, and answer things I won't answer publicly.</p>
+        <a class="btn" href="#" data-group>Join the private group <span class="arw">&#8594;</span></a>
+        <p class="after">Once you're in, tell me the one thing that stops you from posting. I read all of them. This gets built around the answers.</p>
+      </div>
+
+      <div class="share">
+        <div class="k">Bring someone</div>
+        <p>If there's a friend who should be in that room, send her this. Her seat gets held too, and I'd rather you walk in with someone.</p>
+        <div class="row">
+          <input type="text" value="thevisiblemethod.com/waitlist" readonly aria-label="Waitlist link" data-link>
+          <button class="copy" type="button" data-copy>Copy link</button>
+        </div>
+      </div>
+    </div>
+
+    <p class="foot">Hosted by Jamie Gabrielle. This site is not part of the Instagram or Facebook websites, or Meta Platforms, Inc. &copy; 2026 The Visible Method.</p>
+  </div>
+
+  <div class="art">
+    <div class="frame"></div>
+    <img class="artimg" src="images/jamie-2-web.jpg" alt="Jamie Gabrielle, behind the scenes">
+  </div>
+
+</div>
+
+<script>
+(function(){
+  var btn  = document.querySelector('[data-copy]');
+  var link = document.querySelector('[data-link]');
+  if (!btn || !link) return;
+
+  btn.addEventListener('click', function(){
+    var reset = function(){ setTimeout(function(){ btn.textContent = 'Copy link'; }, 1800); };
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(link.value).then(function(){
+        btn.textContent = 'Copied'; reset();
+      }).catch(function(){
+        link.select(); btn.textContent = 'Press ⌘C'; reset();
+      });
+    } else {
+      link.select(); btn.textContent = 'Press ⌘C'; reset();
+    }
+  });
+})();
+</script>

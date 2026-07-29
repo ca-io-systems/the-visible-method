@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Visible Method · Free Live Workshop</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,600&family=Playfair+Display:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<style>
+  *{box-sizing:border-box;margin:0;padding:0;}
+  :root{
+    --green:#14271C;--green-2:#1C3527;--ink:#2B1E16;--panel:#ECECEC;--butter:#E4CD8F;--white:#FFFFFF;
+    --serif:'Playfair Display',Georgia,serif;--sans:'Archivo',system-ui,sans-serif;
+  }
+  html,body{background:var(--white);}
+  body{font-family:var(--sans);color:var(--ink);-webkit-font-smoothing:antialiased;overflow-x:hidden;}
+  a{color:inherit;text-decoration:none;}
+  a:hover{color:var(--green-2);}
+  img{display:block;}
+  .wrap{max-width:1200px;margin:0 auto;padding-left:32px;padding-right:32px;}
+  .btn{display:inline-block;background:var(--green);color:#fff;font-weight:700;font-size:12px;letter-spacing:.15em;text-transform:uppercase;padding:17px 34px;border-radius:999px;border:0;cursor:pointer;transition:opacity .2s,background .2s,color .2s;text-align:center;}
+  .btn:hover{opacity:.85;color:#fff;}
+  .obtn{background:transparent;border:1px solid #fff;color:#fff;}
+  .obtn:hover{background:#fff;color:var(--green);opacity:1;}
+  .chip{display:inline-block;background:var(--panel);font-weight:700;font-size:11px;letter-spacing:.06em;padding:9px 18px;border-radius:999px;}
+  .h-bold{font-weight:800;letter-spacing:-.01em;line-height:1.02;}
+  /* header */
+  header{position:sticky;top:0;z-index:50;background:var(--white);border-bottom:1px solid #E5E5E5;}
+  .bar{display:flex;align-items:center;justify-content:space-between;gap:24px;padding-top:14px;padding-bottom:14px;}
+  .mark{font-weight:800;font-size:13px;line-height:1.15;letter-spacing:.06em;text-transform:uppercase;}
+  .mark em{font-family:var(--serif);font-style:italic;font-weight:400;text-transform:none;letter-spacing:0;color:var(--green-2);}
+  .cd{display:flex;align-items:flex-start;gap:10px;}
+  .cd .n{font-weight:800;font-size:26px;line-height:1;}
+  .cd .l{font-size:8px;letter-spacing:.18em;color:#999999;margin-top:5px;text-align:center;}
+  .cd .c{font-weight:700;font-size:22px;color:#CCCCCC;line-height:1;}
+  /* hero */
+  .hero{display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:stretch;padding-top:40px;}
+  .hero-card{background:var(--panel);border-radius:14px;padding:52px 48px;}
+  .hero-card h1{font-family:var(--serif);font-weight:400;font-size:clamp(38px,4vw,56px);line-height:1.02;letter-spacing:-.01em;}
+  .hero-card h1 em{font-style:italic;}
+  .hero-card .lede{font-size:15px;line-height:1.65;color:#444444;margin-top:26px;max-width:440px;}
+  .hero-card .lede strong{font-weight:700;color:var(--ink);}
+  .invite{position:relative;border-radius:12px;overflow:hidden;margin-top:24px;container-type:inline-size;background:#4E1D1B;aspect-ratio:1/1.02;}
+  .invite img{position:absolute;width:100%;top:-32cqw;left:0;}
+  .invite-text{position:absolute;left:12%;right:14%;top:6cqw;height:52cqw;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;color:var(--ink);gap:2.4cqw;}
+  .it-k{font-size:2.6cqw;letter-spacing:.32em;text-transform:uppercase;color:#8A5A44;font-weight:700;}
+  .it-t{font-family:var(--serif);font-size:8cqw;line-height:1.05;}
+  .it-d{font-weight:700;font-size:3.6cqw;letter-spacing:.08em;}
+  .it-w{font-size:3cqw;letter-spacing:.12em;text-transform:uppercase;color:#6B5B49;}
+  .hero-media{border-radius:14px;overflow:hidden;background:var(--green);min-height:560px;position:relative;}
+  .hero-media img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0;opacity:.88;}
+  .play{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;}
+  .play .ring{width:74px;height:74px;border-radius:50%;background:rgba(20,39,28,.45);border:1px solid rgba(255,255,255,.55);display:flex;align-items:center;justify-content:center;backdrop-filter:blur(2px);}
+  .play .tri{width:0;height:0;border-left:20px solid #fff;border-top:12px solid transparent;border-bottom:12px solid transparent;margin-left:5px;}
+  /* trap */
+  .trap{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start;padding-top:56px;padding-bottom:56px;}
+  .trap h2{font-size:clamp(36px,4vw,54px);margin-top:24px;}
+  .trap h2 u{text-decoration:underline;text-underline-offset:6px;}
+  .trap .lead{font-weight:700;font-size:16px;margin-top:26px;}
+  .trap .body{font-size:15px;line-height:1.7;color:#4A4034;margin-top:14px;max-width:460px;}
+  .quote-card{background:var(--panel);border-radius:14px;padding:56px 52px;text-align:center;}
+  .quote-card .q{font-family:var(--serif);font-weight:400;font-size:clamp(22px,2.4vw,30px);line-height:1.32;}
+  .quote-card .d{font-size:15px;line-height:1.7;color:#4A4034;margin-top:26px;}
+  .quote-card .who{font-weight:700;font-size:12px;letter-spacing:.02em;margin-top:26px;}
+  .dots{display:flex;align-items:center;justify-content:center;gap:22px;margin-top:26px;}
+  .dots .dr{display:flex;gap:9px;align-items:center;}
+  /* agenda */
+  .agenda{background:var(--green);color:#fff;padding:88px 32px 96px;background-image:radial-gradient(circle at 20% 30%,rgba(228,205,143,.06),transparent 40%),radial-gradient(circle at 80% 70%,rgba(255,255,255,.04),transparent 40%);}
+  .agenda .kick{font-weight:700;font-size:12px;letter-spacing:.12em;color:var(--butter);text-transform:uppercase;}
+  .agenda h2{font-size:clamp(42px,5vw,64px);line-height:1;margin-top:18px;}
+  .agenda .sub{font-size:16px;line-height:1.6;color:rgba(255,255,255,.78);max-width:520px;margin:24px auto 0;}
+  .rail{position:relative;margin-top:60px;}
+  .rail .line{position:absolute;left:5%;right:5%;top:9px;height:1px;background:rgba(255,255,255,.28);}
+  .rail .dotsrow{display:flex;justify-content:space-between;padding:0 5%;position:relative;}
+  .rail .dotsrow span{width:18px;height:18px;border-radius:50%;border:2px solid #fff;background:var(--green);}
+  .pills,.cards{display:grid;grid-template-columns:repeat(5,1fr);gap:16px;}
+  .pills{margin-top:34px;}
+  .pills div{border:1px solid #fff;border-radius:8px;text-align:center;padding:13px;font-weight:700;font-size:13px;letter-spacing:.04em;}
+  .cards{margin-top:20px;}
+  .cards>div{background:#fff;color:var(--ink);border-radius:10px;padding:34px 24px;text-align:center;min-height:180px;}
+  .cards h4{font-family:var(--serif);font-weight:400;font-size:25px;line-height:1.12;}
+  .cards p{font-size:12.5px;line-height:1.55;color:#5C5245;margin-top:18px;}
+  /* bio */
+  .bio{background:var(--panel);padding:70px 32px;}
+  .bio-grid{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1.15fr;gap:56px;align-items:center;}
+  .bio-img{border-radius:12px;overflow:hidden;height:460px;background:#DCDCDC;}
+  .bio-img img{width:100%;height:100%;object-fit:cover;object-position:center 30%;}
+  .bio .kick{font-weight:700;font-size:12px;letter-spacing:.1em;color:#5C5245;}
+  .bio h2{font-family:var(--serif);font-weight:400;font-size:clamp(38px,4.6vw,56px);line-height:1;letter-spacing:-.01em;margin-top:14px;}
+  .bio h2 em{font-style:italic;}
+  .bio .lead{font-weight:700;font-size:15px;line-height:1.6;margin-top:26px;}
+  .bio .body{font-size:15px;line-height:1.7;color:#4A4034;margin-top:16px;max-width:520px;}
+  /* reserve */
+  .reserve{padding-top:80px;padding-bottom:80px;}
+  .reserve h2{font-size:clamp(38px,4.4vw,58px);margin-top:22px;}
+  .reserve h2 u{text-decoration:underline;text-underline-offset:8px;}
+  .steps3{display:grid;grid-template-columns:repeat(3,1fr);gap:40px;margin-top:56px;}
+  .steps3 .num{font-weight:800;font-size:17px;}
+  .steps3 .rule{border-top:1px solid #D2D2D2;margin-top:12px;padding-top:24px;}
+  .steps3 h4{font-family:var(--serif);font-weight:400;font-size:26px;}
+  .steps3 p{font-size:14px;line-height:1.65;color:#5C5245;margin-top:14px;}
+  .form-card{background:var(--panel);border-radius:14px;padding:clamp(30px,3.6vw,48px);margin-top:56px;display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center;}
+  .form-card .fh{font-family:var(--serif);font-weight:400;font-size:clamp(26px,2.6vw,36px);line-height:1.1;}
+  .form-card .fd{font-size:14.5px;line-height:1.7;color:#4A4034;margin-top:14px;max-width:40ch;}
+  form{display:grid;gap:14px;}
+  .field label{display:block;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:#8A8172;margin-bottom:7px;font-weight:700;}
+  .field input{width:100%;background:#fff;border:1px solid #D2D2D2;border-radius:10px;color:var(--ink);font-family:var(--sans);font-size:15px;padding:15px 16px;}
+  .field input:focus{outline:none;border-color:var(--green);}
+  .done{display:none;background:var(--green);color:#fff;border-radius:10px;padding:26px;}
+  .done .t{font-family:var(--serif);font-size:24px;line-height:1.15;}
+  .done .d{font-size:14px;color:rgba(255,255,255,.8);margin-top:10px;line-height:1.6;}
+  /* finale */
+  .finale{background:var(--green);color:#fff;padding:84px 32px 70px;text-align:center;background-image:radial-gradient(circle at 30% 20%,rgba(228,205,143,.06),transparent 45%),radial-gradient(circle at 70% 80%,rgba(255,255,255,.04),transparent 45%);}
+  .finale .kick{font-weight:700;font-size:12px;letter-spacing:.12em;color:var(--butter);text-transform:uppercase;}
+  .finale h2{font-size:clamp(48px,6.4vw,76px);line-height:.98;margin-top:16px;}
+  .finale .sub{font-size:16px;line-height:1.6;color:rgba(255,255,255,.78);max-width:480px;margin:22px auto 0;}
+  .bigcd{display:flex;align-items:flex-start;justify-content:center;gap:16px;margin-top:44px;}
+  .bigcd .n{font-weight:800;font-size:clamp(48px,6.4vw,76px);line-height:.9;}
+  .bigcd .l{font-size:11px;letter-spacing:.2em;color:var(--butter);margin-top:12px;}
+  .bigcd .c{font-weight:700;font-size:clamp(38px,5vw,60px);color:rgba(255,255,255,.25);line-height:1;}
+  .finale .host{font-family:var(--serif);font-style:italic;font-size:15px;color:rgba(255,255,255,.65);margin-top:34px;}
+  /* footer */
+  footer{background:var(--green);color:#fff;border-top:1px solid rgba(255,255,255,.12);padding:48px 32px 40px;}
+  footer .top{max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:24px;}
+  footer .fmark{font-weight:800;font-size:20px;line-height:1;letter-spacing:.04em;text-transform:uppercase;}
+  footer a:hover{color:var(--butter);}
+  footer .legal{max-width:1200px;margin:28px auto 0;border-top:1px solid rgba(255,255,255,.12);padding-top:22px;}
+  footer .fine{font-size:11px;line-height:1.6;color:rgba(255,255,255,.5);}
+  @media (max-width:1080px){
+    .pills,.cards{grid-template-columns:1fr 1fr;}
+    .rail{display:none;}
+    .hero{grid-template-columns:1fr;}
+    .hero-media{min-height:420px;}
+    .trap,.bio-grid,.form-card{grid-template-columns:1fr;}
+  }
+  @media (max-width:640px){
+    .pills,.cards,.steps3{grid-template-columns:1fr;}
+    .cd{display:none;}
+    .wrap{padding-left:20px;padding-right:20px;}
+    .bar{gap:14px;}
+    .mark{font-size:11px;}
+    .bar .btn{padding:13px 20px;font-size:11px;}
+    .hero{padding-top:24px;gap:16px;}
+    .hero-card{padding:30px 22px;}
+    .hero-card h1{font-size:clamp(30px,8.6vw,38px);}
+    .hero-media{min-height:340px;}
+    .trap{padding-top:40px;padding-bottom:40px;gap:32px;}
+    .trap h2,.reserve h2{font-size:clamp(28px,8vw,36px);}
+    .quote-card{padding:32px 24px;}
+    .agenda{padding:56px 20px 64px;}
+    .agenda h2{font-size:clamp(32px,9vw,42px);}
+    .bio{padding:48px 20px;}
+    .bio-grid{gap:28px;}
+    .bio-img{height:340px;}
+    .reserve{padding-top:52px;padding-bottom:52px;}
+    .steps3{gap:28px;margin-top:36px;}
+    .form-card{padding:24px 20px;gap:26px;margin-top:36px;}
+    .finale{padding:56px 20px 48px;}
+    .finale h2{font-size:clamp(38px,11vw,52px);}
+    .bigcd{gap:10px;}
+    footer{padding:36px 20px 32px;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap bar">
+    <div class="mark">Jamie<br>Gabrielle <em>· The Visible Method</em></div>
+    <div class="cd" data-cd>
+      <div><div class="n" data-d>00</div><div class="l">DAYS</div></div><div class="c">:</div>
+      <div><div class="n" data-h>00</div><div class="l">HOURS</div></div><div class="c">:</div>
+      <div><div class="n" data-m>00</div><div class="l">MIN</div></div><div class="c">:</div>
+      <div><div class="n" data-s>00</div><div class="l">SEC</div></div>
+    </div>
+    <a href="#reserve" class="btn">Save my spot</a>
+  </div>
+</header>
+
+<section class="wrap hero">
+  <div class="hero-card">
+    <h1>Do you want to master content? More attention, more money, <em>&amp; a message people remember.</em></h1>
+    <a href="#reserve" class="btn" style="display:block;margin-top:30px;">Save my spot</a>
+    <div class="invite">
+      <img src="images/hand-invite.png" alt="A lace-gloved hand holding the workshop invitation">
+      <div class="invite-text">
+        <div class="it-k">You're invited</div>
+        <div class="it-t">Free Live Workshop</div>
+        <div class="it-d">AUG 11 &middot; 12 PM PT / 3 PM ET</div>
+        <div class="it-w">Live on Zoom &middot; Free</div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-media">
+    <img src="images/jamie-1.jpg" alt="Jamie Gabrielle">
+    <div class="play"><div class="ring"><div class="tri"></div></div></div>
+  </div>
+</section>
+
+<section class="wrap trap">
+  <div>
+    <span class="chip">The Part Nobody Says Out Loud</span>
+    <h2 class="h-bold">THE PROBLEM WAS NEVER <u>DISCIPLINE</u></h2>
+    <p class="lead">You've tried posting consistently before…</p>
+    <p class="body">You batched. You planned. You lasted eleven days. Then one post felt wrong, and the whole thing collapsed. That's not a discipline problem. It's a positioning problem: you never decided which stories are yours to tell, so every post is a decision, and every decision is a chance to quit. We fix the decision, and the consistency takes care of itself.</p>
+  </div>
+  <div>
+    <div class="quote-card">
+      <p class="q">"I could talk to a camera all day. I just froze on which of my own stories were worth telling."</p>
+      <p class="d">She left the workshop with a month of content mapped and has posted every week since without second-guessing.</p>
+      <p class="who">From the room, last cohort</p>
+    </div>
+    <div class="dots">
+      <span style="cursor:pointer;font-size:20px;color:#999999;">&#8592;</span>
+      <div class="dr">
+        <span style="width:8px;height:8px;border-radius:50%;background:var(--green);display:inline-block;"></span>
+        <span style="width:6px;height:6px;border-radius:50%;background:#C4C4C4;display:inline-block;"></span>
+        <span style="width:6px;height:6px;border-radius:50%;background:#C4C4C4;display:inline-block;"></span>
+      </div>
+      <span style="cursor:pointer;font-size:20px;color:var(--ink);">&#8594;</span>
+    </div>
+  </div>
+</section>
+
+<section class="agenda">
+  <div style="max-width:1200px;margin:0 auto;">
+    <div style="text-align:center;">
+      <div class="kick">On The Agenda</div>
+      <h2 class="h-bold">90 MINUTES.<br>THREE STORIES.</h2>
+      <p class="sub">A practical walkthrough of the method Jamie uses to help women show up online the way they already show up in real life.</p>
+      <a href="#reserve" class="btn obtn" style="margin-top:30px;">Save my spot</a>
+    </div>
+    <div class="rail" aria-hidden="true">
+      <div class="line"></div>
+      <div class="dotsrow"><span></span><span></span><span></span><span></span><span></span></div>
+    </div>
+    <div class="pills">
+      <div>Step 01</div><div>Step 02</div><div>Step 03</div><div>Step 04</div><div>Step 05</div>
+    </div>
+    <div class="cards">
+      <div><h4>Why You Stopped</h4><p>The real reason the posting never sticks, and why every fix made it worse.</p></div>
+      <div><h4>Your Three Stories</h4><p>We find them live, so you never start from a blank page again.</p></div>
+      <div><h4>Elevated, Not Exposed</h4><p>How to be personal without oversharing. Raw was never the only way to be real.</p></div>
+      <div><h4>The Setup</h4><p>One corner of your home, made to look like a brand, with what you own.</p></div>
+      <div><h4>Never Go Quiet</h4><p>The batching system that survives a real week.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="bio">
+  <div class="bio-grid">
+    <div class="bio-img"><img src="images/jamie-scarf.jpg" alt="Jamie Gabrielle"></div>
+    <div>
+      <div class="kick">A Note From Your Host</div>
+      <h2>Meet Jamie <em>Gabrielle</em></h2>
+      <p class="body" style="margin-bottom:14px;">Hi, I'm Jamie.</p>
+      <p class="body" style="margin-bottom:14px;">For years I was the best-kept secret in every room I walked into. Magnetic in person, invisible online. Everyone who met me said "how do you not have a bigger audience?" — and I didn't have an answer.</p>
+      <p class="body" style="margin-bottom:14px;">So I built my brand from a corner of my apartment, with a phone and three stories. The Visible Method is everything I learned closing that gap: how to choose the stories that are yours to tell, look expensive without a team, and stay visible without living on your phone.</p>
+      <p class="body" style="margin-bottom:22px;">On August 11, I'll teach it to you live. I hope you'll be in the room.</p>
+      <p style="font-family:'Playfair Display',serif;font-style:italic;font-size:30px;line-height:1;">Jamie</p>
+    </div>
+  </div>
+</section>
+
+<section id="reserve" class="wrap reserve">
+  <span class="chip">Getting In Is Easy</span>
+  <h2 class="h-bold">RESERVE, SHOW UP,<br><u>LEAVE SEEN.</u></h2>
+  <div class="steps3">
+    <div>
+      <div class="num">01</div><div class="rule"></div>
+      <h4>Reserve Your Seat</h4>
+      <p>Fill out the short form below to claim your free seat for the live workshop with Jamie.</p>
+    </div>
+    <div>
+      <div class="num">02</div><div class="rule"></div>
+      <h4>Block The 90 Minutes</h4>
+      <p>You'll get a confirmation, then the Zoom link the morning of August 11 at 12 PM PT.</p>
+    </div>
+    <div>
+      <div class="num">03</div><div class="rule"></div>
+      <h4>Show Up Live</h4>
+      <p>Bring a notepad and walk away with your three stories and exactly what to post first.</p>
+    </div>
+  </div>
+  <div class="form-card">
+    <div>
+      <div class="fh">Save your seat for August 11.</div>
+      <p class="fd">The room is capped so everyone gets seen. Name, email, phone — that's it. I'll text you the morning we go live.</p>
+    </div>
+    <div>
+      <form data-form novalidate>
+        <div class="field">
+          <label for="r-name">First name</label>
+          <input id="r-name" name="name" type="text" placeholder="Your first name" autocomplete="given-name" required>
+        </div>
+        <div class="field">
+          <label for="r-email">Email</label>
+          <input id="r-email" name="email" type="email" placeholder="you@email.com" autocomplete="email" required>
+        </div>
+        <div class="field">
+          <label for="r-phone">Phone number</label>
+          <input id="r-phone" name="phone" type="tel" placeholder="(555) 000-0000" autocomplete="tel" required>
+        </div>
+        <button class="btn" type="submit" style="width:100%;">Save my spot</button>
+      </form>
+      <div class="done" data-done>
+        <div class="t">You're in.</div>
+        <div class="d">Your seat is saved. Check your inbox for the confirmation, and watch for a text the morning of August 11.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="finale">
+  <div style="max-width:900px;margin:0 auto;">
+    <div class="kick">90 Minutes That Change How You Show Up</div>
+    <h2 class="h-bold">LIVE ON<br>AUGUST 11.</h2>
+    <p class="sub">Jamie walks you through the three stories that make the internet finally see what everyone who meets you already does.</p>
+    <div class="bigcd">
+      <div><div class="n" data-d>00</div><div class="l">DAYS</div></div><div class="c">:</div>
+      <div><div class="n" data-h>00</div><div class="l">HOURS</div></div><div class="c">:</div>
+      <div><div class="n" data-m>00</div><div class="l">MIN</div></div><div class="c">:</div>
+      <div><div class="n" data-s>00</div><div class="l">SEC</div></div>
+    </div>
+    <a href="#reserve" class="btn obtn" style="margin-top:44px;">Save my spot</a>
+    <p class="host">Hosted by Jamie Gabrielle · The Visible Method · Live on Zoom</p>
+  </div>
+</section>
+
+<footer>
+  <div class="top">
+    <div class="fmark">The Visible Method</div>
+    <div style="display:flex;gap:28px;font-size:15px;">
+      <a href="#">Privacy Policy</a><a href="#">Terms</a><a href="#">Contact</a>
+    </div>
+  </div>
+  <div class="legal">
+    <p class="fine">This site is not part of the Instagram or Facebook websites, or Meta Platforms, Inc. Additionally, this site is not endorsed by Meta in any way. Results shared are individual experiences and are not a promise of your results. &copy; 2026 The Visible Method.</p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var TARGET = new Date('2026-08-11T12:00:00-07:00').getTime();
+  function pad(n){ return String(n).padStart(2,'0'); }
+  function tick(){
+    var diff = Math.max(0, TARGET - Date.now());
+    var d = Math.floor(diff/86400000); diff -= d*86400000;
+    var h = Math.floor(diff/3600000); diff -= h*3600000;
+    var m = Math.floor(diff/60000); diff -= m*60000;
+    var s = Math.floor(diff/1000);
+    document.querySelectorAll('[data-d]').forEach(function(el){ el.textContent = pad(d); });
+    document.querySelectorAll('[data-h]').forEach(function(el){ el.textContent = pad(h); });
+    document.querySelectorAll('[data-m]').forEach(function(el){ el.textContent = pad(m); });
+    document.querySelectorAll('[data-s]').forEach(function(el){ el.textContent = pad(s); });
+  }
+  tick(); setInterval(tick, 1000);
+
+  var form = document.querySelector('[data-form]');
+  var done = document.querySelector('[data-done]');
+  if (form) {
+    form.addEventListener('submit', function(ev){
+      ev.preventDefault();
+      var ok = true;
+      form.querySelectorAll('input[required]').forEach(function(i){
+        if (!i.value.trim()) { ok = false; i.style.borderColor = '#B4462F'; }
+      });
+      if (!ok) return;
+      window.location.href = '/studio-session';
+    });
+    form.querySelectorAll('input').forEach(function(i){
+      i.addEventListener('input', function(){ i.style.borderColor = ''; });
+    });
+  }
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,229 @@
+<title>The Visible Method · Waitlist</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --green:#14271C;
+    --navy:#14271C;
+    --paper:#FFFFFF;
+    --cream:#FFFFFF;
+    --ink:#2B1E16;
+
+    --fg:var(--ink);
+    --fg-dim:rgba(43,30,22,.95);
+    --fg-faint:rgba(43,30,22,.72);
+    --line:rgba(43,30,22,.16);
+
+    --display:"Playfair Display",Georgia,"Times New Roman",serif;
+    --sans:-apple-system,BlinkMacSystemFont,"Segoe UI","Helvetica Neue",Arial,sans-serif;
+  }
+
+  /* Single-theme by intent: the wine ground is the brand and must survive the
+     viewer's OS theme so the ad, this page and the workshop page read as one. */
+  html,body{background:#FFFFFF;}
+
+  .vm{
+    background:#FFFFFF;color:var(--fg);
+    font-family:var(--sans);font-size:18px;line-height:1.66;
+    -webkit-font-smoothing:antialiased;overflow-x:hidden;
+    min-height:100vh;display:block;
+  }
+  .vm *{box-sizing:border-box;}
+  .vm p{margin:0;}
+  .vm h1{margin:0;font-weight:500;text-wrap:balance;}
+
+  /* ---------- left panel ---------- */
+  .panel{
+    display:flex;flex-direction:column;align-items:center;text-align:center;
+    padding:clamp(28px,4vw,56px) clamp(24px,4.5vw,72px) clamp(40px,5vw,64px);
+  }
+  .mark{
+    font-size:10px;letter-spacing:.28em;text-transform:uppercase;
+    font-weight:600;color:var(--fg);
+  }
+
+  .middle{padding:clamp(30px,5vw,56px) 0 0;max-width:820px;margin:0 auto;display:flex;flex-direction:column;align-items:center;}
+
+  .kicker{
+    display:flex;align-items:center;justify-content:center;gap:12px;color:#4E1D1B;
+    font-size:13px;letter-spacing:.22em;text-transform:uppercase;font-weight:700;
+    margin-bottom:clamp(20px,3vw,32px);
+  }
+  .kicker .dot{width:5px;height:5px;background:currentColor;border-radius:50%;flex:none;}
+
+  h1{
+    font-family:var(--display);line-height:1.0;letter-spacing:-.015em;
+    font-size:clamp(38px,5.4vw,74px);
+  }
+  h1 em{font-style:italic;display:block;}
+
+  .sub{margin-top:clamp(20px,2.6vw,30px);display:grid;gap:12px;max-width:52ch;margin-left:auto;margin-right:auto;}
+  .sub p{font-size:clamp(16.5px,1.3vw,19px);line-height:1.7;color:var(--fg-dim);}
+
+  /* ---------- form ---------- */
+  .formcard{
+    margin-top:clamp(28px,3.8vw,44px);max-width:520px;width:100%;position:relative;text-align:left;margin-left:auto;margin-right:auto;
+    background:#FFFFFF;border:1px solid rgba(43,30,22,.3);
+    padding:clamp(24px,3vw,36px);
+  }
+  .formcard::after{content:"";position:absolute;inset:7px;border:1px solid rgba(201,169,106,.6);pointer-events:none;}
+  .formcard .fc-k{font-size:11px;letter-spacing:.26em;text-transform:uppercase;font-weight:700;color:#4E1D1B;}
+  .formcard .fc-t{font-family:var(--display);font-size:clamp(22px,2.2vw,28px);line-height:1.12;margin-top:10px;}
+  form{margin-top:20px;display:grid;gap:15px;position:relative;z-index:2;}
+  .field{display:grid;gap:7px;}
+  .field label{font-size:11px;letter-spacing:.18em;text-transform:uppercase;font-weight:600;color:var(--fg-faint);}
+  .field input{
+    width:100%;background:#FFFFFF;padding-left:12px;padding-right:12px;border:0;border-bottom:1px solid var(--line);
+    color:var(--fg);font-family:var(--sans);font-size:16px;padding:13px 0;border-radius:0;
+  }
+  .field input::placeholder{color:var(--fg-faint);}
+  .field input:focus{outline:none;border-bottom-color:var(--fg);}
+  .field .hint{font-size:12px;color:var(--fg-faint);line-height:1.6;}
+
+  .btn{
+    display:flex;align-items:center;justify-content:center;gap:12px;width:100%;
+    background:var(--green);color:#FFFFFF;
+    font-family:var(--sans);font-size:11px;font-weight:700;
+    letter-spacing:.18em;text-transform:uppercase;
+    padding:20px;min-height:58px;border:0;border-radius:999px;cursor:pointer;
+    transition:background .25s ease,transform .25s ease;
+  }
+  .btn:hover{background:#1F3A2B;transform:translateY(-1px);}
+  .btn:focus-visible{outline:2px solid var(--cream);outline-offset:4px;}
+  .btn .arw{transition:transform .25s ease;}
+  .btn:hover .arw{transform:translateX(4px);}
+
+  .perks{margin-top:22px;display:grid;border-top:1px solid rgba(43,30,22,.25);position:relative;z-index:2;}
+  .perks div{
+    display:grid;grid-template-columns:auto 1fr;gap:13px;align-items:baseline;
+    padding:12px 0;border-bottom:1px solid var(--line);
+    font-size:15px;line-height:1.62;color:var(--fg-dim);
+  }
+  .perks i{font-family:var(--display);font-style:italic;color:var(--fg-faint);font-size:13px;}
+
+  .foot{margin-top:clamp(30px,4vw,48px);text-align:center;font-size:12px;letter-spacing:.05em;color:var(--fg-faint);line-height:1.7;max-width:52ch;}
+
+  /* ---------- right panel ---------- */
+  .art{
+    background:var(--green);border-top:1px solid var(--line);
+    min-height:0;height:min(62vh,640px);padding:0;position:relative;overflow:hidden;
+  }
+  .art .ph{
+    text-align:center;color:var(--fg-faint);
+    font-size:10px;letter-spacing:.2em;text-transform:uppercase;line-height:1.9;
+  }
+  .art .artimg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;}
+  .art .frame{z-index:2;
+    position:absolute;inset:clamp(18px,2.6vw,40px);
+    border:1px solid rgba(228,205,143,.85);box-shadow:0 0 0 1px rgba(43,30,22,.25);pointer-events:none;
+  }
+
+  /* ---------- confirmation swap ---------- */
+  .done{display:none;margin-top:20px;
+        border:1px solid rgba(43,30,22,.25);background:#FFFFFF;padding:30px;position:relative;z-index:2;}
+  .done .t{font-family:var(--display);font-size:26px;line-height:1.15;}
+  .done .d{font-size:15px;color:var(--fg-dim);margin-top:12px;line-height:1.7;}
+
+  /* ---------- responsive ---------- */
+  @media (max-width:900px){
+    .vm{grid-template-columns:1fr;min-height:0;}
+    .panel{min-height:0;padding-bottom:clamp(36px,7vw,56px);}
+    .art{min-height:44vh;border-left:0;border-top:1px solid var(--line);}
+    .middle{padding:clamp(30px,7vw,56px) 0;}
+  }
+  @media (max-width:640px){
+    h1 em{display:inline;}
+    .foot{margin-top:26px;}
+  }
+  @media (prefers-reduced-motion:reduce){
+    .btn,.btn .arw{transition:none;}
+  }
+</style>
+
+<div class="vm">
+
+  <div class="panel">
+    <div class="mark">The Visible Method</div>
+
+    <div class="middle">
+      <div class="kicker"><span class="dot"></span> Private workshop · Waitlist</div>
+
+      <h1>
+        Everyone who meets you in real life gets it.
+        <em>The internet still doesn't.</em>
+      </h1>
+
+      <div class="sub">
+        <p>I'm opening a small room to fix that.</p>
+        <p>The room is capped, and the list gets in before registration opens to everyone else.</p>
+      </div>
+
+      <div class="formcard">
+        <div class="fc-k">Join the waitlist</div>
+        <div class="fc-t">First in the room, before doors open.</div>
+        <form data-form novalidate>
+        <div class="field">
+          <label for="w-name">First name</label>
+          <input id="w-name" name="name" type="text" placeholder="Your first name" autocomplete="given-name" required>
+        </div>
+        <div class="field">
+          <label for="w-email">Email</label>
+          <input id="w-email" name="email" type="email" placeholder="you@email.com" autocomplete="email" required>
+        </div>
+        <div class="field">
+          <label for="w-phone">Phone number</label>
+          <input id="w-phone" name="phone" type="tel" placeholder="(555) 000-0000" autocomplete="tel" required>
+          <div class="hint">Doors won't be open long. I'll text you when they are.</div>
+        </div>
+        <button class="btn" type="submit">Let's get you seen <span class="arw">&#8594;</span></button>
+      </form>
+
+      <div class="done" data-done>
+        <div class="t">Now we fix the second part.</div>
+        <div class="d">Your seat is held. When registration opens, you'll get a text before it goes public.</div>
+      </div>
+
+        <div class="perks" data-perks>
+        <div><i>&#8212;</i><span>Free to attend, and your seat is held before anyone else's.</span></div>
+        <div><i>&#8212;</i><span>Entry to the private group, where I share everything first.</span></div>
+        <div><i>&#8212;</i><span>A text the moment doors open, so you don't find out too late.</span></div>
+        </div>
+      </div>
+    </div>
+
+    <p class="foot"><br></p>
+  </div>
+
+  <div class="art">
+    <div class="frame"></div>
+    <img class="artimg" src="images/jamie-1-web.jpg" alt="Jamie Gabrielle">
+  </div>
+
+</div>
+
+<script>
+(function(){
+  // Preview only. Nothing is transmitted from this page.
+  var form  = document.querySelector('[data-form]');
+  var done  = document.querySelector('[data-done]');
+  var perks = document.querySelector('[data-perks]');
+  if (!form) return;
+
+  form.addEventListener('submit', function(ev){
+    ev.preventDefault();
+    var ok = true;
+    form.querySelectorAll('input[required]').forEach(function(i){
+      if (!i.value.trim()) { ok = false; i.style.borderBottomColor = '#E4CD8F'; }
+    });
+    if (!ok) return;
+    window.location.href = '/waitlist/thank-you';
+  });
+
+  form.querySelectorAll('input').forEach(function(i){
+    i.addEventListener('input', function(){ i.style.borderBottomColor = ''; });
+  });
+})();
+</script>

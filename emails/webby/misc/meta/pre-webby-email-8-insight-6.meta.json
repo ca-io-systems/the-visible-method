@@ -1,0 +1,16 @@
+{
+  "sourceName": "Pre-Webby | Email 8 - nobody is",
+  "proposedName": "Pre-Webby | Email 8 - nobody is",
+  "subject": "nobody is disciplined",
+  "previewText": "Consistency isn't what you put in. It's what comes out.",
+  "timing": "Tue 8am — all",
+  "designNotes": {
+    "reference": "https://the-visible-method.vercel.app/waitlist — formcard shell",
+    "designSystem": "Formcard 600px. Playfair headline. Link CTAs where applicable.",
+    "pushStatus": "local only — awaiting go signal",
+    "mergeTagsUsed": [
+      "{{custom_values.webby__event_date__time_2}}",
+      "{{custom_values.webby__event_day}}"
+    ]
+  }
+}

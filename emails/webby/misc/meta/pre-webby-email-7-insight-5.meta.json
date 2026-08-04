@@ -1,0 +1,13 @@
+{
+  "sourceName": "Pre-Webby | Email 7 - the worst advice",
+  "proposedName": "Pre-Webby | Email 7 - the worst advice",
+  "subject": "the worst advice in this entire industry",
+  "previewText": "Be more raw stopped more women from posting than any algorithm change.",
+  "timing": "Mon 8am — all",
+  "designNotes": {
+    "reference": "https://the-visible-method.vercel.app/waitlist — formcard shell",
+    "designSystem": "Formcard 600px. Playfair headline. Link CTAs where applicable.",
+    "pushStatus": "local only — awaiting go signal",
+    "mergeTagsUsed": []
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "sourceName": "Pre-Webby | Email 10 - 2 hours",
+  "proposedName": "Pre-Webby | Email 10 - 2 hours",
+  "subject": "2 hours",
+  "previewText": "Two hours. Come in five minutes early.",
+  "timing": "Thu 10am — all",
+  "designNotes": {
+    "reference": "https://the-visible-method.vercel.app/waitlist — formcard shell",
+    "designSystem": "Formcard 600px. Playfair headline. Link CTAs where applicable.",
+    "pushStatus": "local only — awaiting go signal",
+    "mergeTagsUsed": [
+      "{{custom_values.webby__event_zoom_link}}"
+    ]
+  }
+}

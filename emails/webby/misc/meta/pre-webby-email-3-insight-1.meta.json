@@ -1,0 +1,15 @@
+{
+  "sourceName": "Pre-Webby | Email 3 - you're not invisible",
+  "proposedName": "Pre-Webby | Email 3 - you're not invisible",
+  "subject": "you're not invisible",
+  "previewText": "Eleven thousand followers looked at you every day. They were looking at the wrong thing.",
+  "timing": "Thu 8am — all",
+  "designNotes": {
+    "reference": "https://the-visible-method.vercel.app/waitlist — formcard shell",
+    "designSystem": "Formcard 600px. Playfair headline. Link CTAs where applicable.",
+    "pushStatus": "local only — awaiting go signal",
+    "mergeTagsUsed": [
+      "{{custom_values.webby__event_day}}"
+    ]
+  }
+}

@@ -1,6 +1,6 @@
 /**
  * Canonical workshop event for The Visible Method.
- * Keep in sync with confirmation page copy (August 11 · 12 PM PT / 3 PM ET).
+ * Keep in sync with confirmation page copy (August 13 · 12 PM PT / 3 PM ET).
  */
 
 export type WorkshopEvent = {
@@ -18,7 +18,7 @@ export type WorkshopEvent = {
 /**
  * Returns the workshop calendar event used by Add to Calendar links + ICS.
  *
- * @returns WorkshopEvent with UTC start/end derived from 12:00–1:30 PM America/Los_Angeles on Aug 11, 2026
+ * @returns WorkshopEvent with UTC start/end derived from 12:00–1:30 PM America/Los_Angeles on Aug 13, 2026
  */
 export function getWorkshopEvent(): WorkshopEvent {
   const zoomUrl = process.env.WORKSHOP_ZOOM_URL?.trim()
@@ -29,13 +29,13 @@ export function getWorkshopEvent(): WorkshopEvent {
   ]
   if (zoomUrl) descriptionParts.push(`Zoom: ${zoomUrl}`)
 
-  // Aug 11, 2026 12:00–1:30 PM PT (PDT, UTC-7)
+  // Aug 13, 2026 12:00–1:30 PM PT (PDT, UTC-7)
   return {
     title: "The Visible Method · Live Workshop",
     description: descriptionParts.join("\n\n"),
     location,
-    start: new Date("2026-08-11T19:00:00.000Z"),
-    end: new Date("2026-08-11T20:30:00.000Z"),
+    start: new Date("2026-08-13T19:00:00.000Z"),
+    end: new Date("2026-08-13T20:30:00.000Z"),
     timezone: "America/Los_Angeles",
     filename: "the-visible-method-workshop.ics",
   }

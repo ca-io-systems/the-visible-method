@@ -4,9 +4,10 @@
  * returns: creates HTML templates in GHL folder "Webby | Email Templates"
  *          with subjectLine + previewText from misc/meta/*.meta.json
  */
-import { resolve } from "node:path";
+import { dirname, resolve } from "node:path";
+import { fileURLToPath } from "node:url";
 
-const repoRoot = resolve(import.meta.dir, "..");
+const repoRoot = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const webbyRoot = resolve(repoRoot, "emails/webby");
 const envPath = resolve(webbyRoot, "misc/.env");
 const configPath = resolve(webbyRoot, "misc/config.json");

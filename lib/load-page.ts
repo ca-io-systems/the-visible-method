@@ -1,5 +1,6 @@
 import { readFileSync } from "fs";
 import path from "path";
+import { injectFunnelEnv } from "./inject-funnel-env";
 
 /**
  * Loads a content HTML page and normalizes it for App Router rendering.
@@ -10,6 +11,7 @@ import path from "path";
 export function loadPage(name: string): string {
   const filePath = path.join(process.cwd(), "content", `${name}.html`);
   let html = readFileSync(filePath, "utf8");
+  html = injectFunnelEnv(html);
 
   html = html
     .replace(/(src|href)="images\//g, '$1="/images/')

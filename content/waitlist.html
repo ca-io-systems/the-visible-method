@@ -206,7 +206,26 @@
 
 <script>
 (function(){
-  // Preview only. Nothing is transmitted from this page.
+  function queryParam(key) {
+    return new URLSearchParams(window.location.search).get(key) || '';
+  }
+
+  function buildSubmitPayload(firstName, email, phone) {
+    var payload = {
+      firstName: firstName,
+      email: email,
+      phone: phone,
+      optin_url: window.location.href,
+    };
+    var lastName = queryParam('lastName');
+    if (lastName) payload.lastName = lastName;
+    var hyrosTag = queryParam('hyros_tag') || queryParam('ht');
+    if (hyrosTag) payload.hyros_tag = hyrosTag;
+    var revenue = queryParam('revenue');
+    if (revenue) payload.revenue = revenue;
+    return payload;
+  }
+
   var form  = document.querySelector('[data-form]');
   var done  = document.querySelector('[data-done]');
   var perks = document.querySelector('[data-perks]');
@@ -219,7 +238,27 @@
       if (!i.value.trim()) { ok = false; i.style.borderBottomColor = '#E4CD8F'; }
     });
     if (!ok) return;
-    window.location.href = '/waitlist/thank-you';
+
+    var btn = form.querySelector('button[type="submit"]');
+    if (btn) btn.disabled = true;
+
+    fetch('/api/submit', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(buildSubmitPayload(
+        form.querySelector('#w-name').value.trim(),
+        form.querySelector('#w-email').value.trim(),
+        form.querySelector('#w-phone').value.trim(),
+      )),
+    })
+    .then(function(res){
+      if (!res.ok) throw new Error('submit failed');
+      window.location.href = '/waitlist/thank-you';
+    })
+    .catch(function(){
+      if (btn) btn.disabled = false;
+      alert('Something went wrong. Please try again.');
+    });
   });
 
   form.querySelectorAll('input').forEach(function(i){

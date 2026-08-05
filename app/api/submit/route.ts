@@ -4,10 +4,11 @@ type SubmitBody = {
   firstName: string;
   email: string;
   phone: string;
+  optin_url: string;
   lastName?: string;
   hyros_tag?: string;
   revenue?: string;
-  optin_url?: string;
+  source?: string;
 };
 
 /**
@@ -33,15 +34,21 @@ export async function POST(request: Request) {
   const firstName = body.firstName?.trim();
   const email = body.email?.trim();
   const phone = body.phone?.trim();
+  const optinUrl = body.optin_url?.trim();
 
-  if (!firstName || !email || !phone) {
+  if (!firstName || !email || !phone || !optinUrl) {
     return NextResponse.json(
-      { error: "firstName, email, and phone are required" },
+      { error: "firstName, email, phone, and optin_url are required" },
       { status: 400 },
     );
   }
 
-  const payload: Record<string, string> = { firstName, email, phone };
+  const payload: Record<string, string> = {
+    firstName,
+    email,
+    phone,
+    optin_url: optinUrl,
+  };
 
   const lastName = body.lastName?.trim();
   if (lastName) payload.lastName = lastName;
@@ -52,8 +59,8 @@ export async function POST(request: Request) {
   const revenue = body.revenue?.trim();
   if (revenue) payload.revenue = revenue;
 
-  const optinUrl = body.optin_url?.trim();
-  if (optinUrl) payload.optin_url = optinUrl;
+  const source = body.source?.trim();
+  if (source) payload.source = source;
 
   const webhookRes = await fetch(webhookUrl, {
     method: "POST",

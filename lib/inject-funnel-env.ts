@@ -1,4 +1,7 @@
-const FUNNEL_ENV_KEYS = ["WHATSAPP_GROUP_URL"] as const;
+const FUNNEL_ENV_KEYS = [
+  "WHATSAPP_GROUP_URL",
+  "CHECKOUT_URL",
+] as const;
 
 /**
  * Replaces {{ENV_KEY}} placeholders in funnel HTML with server env values.

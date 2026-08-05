@@ -342,6 +342,27 @@
 
 <script>
 (function(){
+  function queryParam(key) {
+    return new URLSearchParams(window.location.search).get(key) || '';
+  }
+
+  function buildSubmitPayload(firstName, email, phone) {
+    var payload = {
+      firstName: firstName,
+      email: email,
+      phone: phone,
+      source: 'workshop',
+      optin_url: window.location.href,
+    };
+    var lastName = queryParam('lastName');
+    if (lastName) payload.lastName = lastName;
+    var hyrosTag = queryParam('hyros_tag') || queryParam('ht');
+    if (hyrosTag) payload.hyros_tag = hyrosTag;
+    var revenue = queryParam('revenue');
+    if (revenue) payload.revenue = revenue;
+    return payload;
+  }
+
   var TARGET = new Date('2026-08-11T12:00:00-07:00').getTime();
   function pad(n){ return String(n).padStart(2,'0'); }
   function tick(){
@@ -367,7 +388,27 @@
         if (!i.value.trim()) { ok = false; i.style.borderColor = '#B4462F'; }
       });
       if (!ok) return;
-      window.location.href = '/studio-session';
+
+      var btn = form.querySelector('button[type="submit"]');
+      if (btn) btn.disabled = true;
+
+      fetch('/api/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(buildSubmitPayload(
+          form.querySelector('#r-name').value.trim(),
+          form.querySelector('#r-email').value.trim(),
+          form.querySelector('#r-phone').value.trim(),
+        )),
+      })
+      .then(function(res){
+        if (!res.ok) throw new Error('submit failed');
+        window.location.href = '/studio-session';
+      })
+      .catch(function(){
+        if (btn) btn.disabled = false;
+        alert('Something went wrong. Please try again.');
+      });
     });
     form.querySelectorAll('input').forEach(function(i){
       i.addEventListener('input', function(){ i.style.borderColor = ''; });

@@ -8,6 +8,11 @@ export const metadata: Metadata = {
   },
   description:
     "Private workshop and waitlist for The Visible Method with Jamie Gabrielle.",
+  icons: {
+    icon: [{ url: "/favicon.svg", type: "image/svg+xml" }],
+    shortcut: "/favicon.svg",
+    apple: "/favicon.svg",
+  },
 };
 
 export default function RootLayout({

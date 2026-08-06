@@ -77,17 +77,39 @@
   .progress-note{margin-top:8px;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--fg-faint);}
 
   /* ---------- video ---------- */
-  .video{margin-top:16px;}
-  .video .cue{text-align:center;font-size:14px;color:var(--fg-dim);margin-bottom:10px;}
-  .video .stagewrap{position:relative;max-width:620px;margin:0 auto;}
-  .video .goldimg{position:relative;z-index:2;width:100%;display:block;pointer-events:none;
-    }
-  .video .frame{
-    position:absolute;z-index:1;left:16.9%;right:17.6%;top:20.3%;bottom:22.5%;
-    background:var(--green);overflow:hidden;
+  .video{
+    margin-top:20px;
+    width:100vw;
+    max-width:100vw;
+    margin-left:calc(50% - 50vw);
+    padding:0 clamp(12px,2vw,28px);
+    box-sizing:border-box;
   }
-  .video .frame video{
-    width:100%;height:100%;object-fit:cover;display:block;background:#000;
+  .video .cue{text-align:center;font-size:14px;color:var(--fg-dim);margin-bottom:14px;}
+  .video .stagewrap{
+    position:relative;
+    max-width:min(880px,100%);
+    margin:0 auto;
+    padding:8px;
+    background:#FFFFFF;
+    border:1px solid rgba(43,30,22,.28);
+  }
+  .video .stagewrap::before{
+    content:"";
+    position:absolute;
+    inset:4px;
+    border:1px solid rgba(201,169,106,.75);
+    pointer-events:none;
+    z-index:2;
+  }
+  .video .frame{
+    position:relative;
+    aspect-ratio:16 / 9;
+    background:#000;
+    overflow:hidden;
+  }
+  .video .frame iframe{
+    position:absolute;inset:0;width:100%;height:100%;border:0;display:block;background:#000;
   }
 
   /* ---------- choice ---------- */
@@ -229,17 +251,19 @@
   .final{
     border:0;padding:clamp(34px,4.4vw,56px);text-align:center;position:relative;
     background:var(--green);color:var(--cream);
+    width:100%;max-width:920px;margin-left:auto;margin-right:auto;
     --fg:var(--cream);--fg-dim:rgba(255,255,255,.75);--fg-faint:rgba(255,255,255,.45);--line:rgba(255,255,255,.2);
   }
   .final::after{content:"";position:absolute;inset:9px;border:1px solid rgba(228,205,143,.5);pointer-events:none;}
   .final .cap{font-family:var(--display);font-size:clamp(20px,2.4vw,28px);}
   .final .cap em{font-style:italic;color:var(--butter);}
   .final .cap-note{margin-top:14px;font-size:14.5px;color:var(--fg-dim);max-width:52ch;margin-left:auto;margin-right:auto;line-height:1.65;}
-  .final .choice{margin-top:clamp(26px,3.4vw,36px);}
+  .final .choice{margin-top:clamp(26px,3.4vw,36px);justify-items:center;}
+  .final .btn-yes{margin-left:auto;margin-right:auto;}
   .guarantee{margin-top:22px;font-size:15px;color:rgba(255,255,255,.85);line-height:1.7;max-width:60ch;margin-left:auto;margin-right:auto;}
 
   /* ---------- footer ---------- */
-  footer.vm-foot{margin-top:clamp(48px,7vw,88px);padding:0 0 56px;text-align:center;display:grid;gap:18px;justify-items:center;}
+  footer.vm-foot{width:100%;margin-top:clamp(48px,7vw,88px);padding:0 0 56px;text-align:center;display:grid;gap:18px;justify-items:center;}
   .foot-rule{width:100%;display:flex;align-items:center;gap:18px;margin-bottom:26px;}
   .foot-rule::before,.foot-rule::after{content:"";flex:1;height:1px;background:rgba(43,30,22,.2);}
   .foot-rule span{font-family:var(--display);font-style:italic;font-size:15px;color:#C9A96A;letter-spacing:.04em;}
@@ -295,25 +319,23 @@
       <div class="video">
         <div class="cue">&#128266; A quick note from me. Make sure your sound is on.</div>
         <div class="stagewrap">
-          <img class="goldimg" src="images/gold-frame.png" alt="">
           <div class="frame">
-            <video
-              controls
-              playsinline
-              preload="metadata"
-              controlsList="nodownload"
-              title="A quick note from Jamie"
-            >
-              <source src="https://assets.cdn.filesafe.space/GoP9PdxIiTzltzuaA8Vg/media/6a749d86a36de46d6a536d67.mov" type="video/mp4">
-              <source src="https://assets.cdn.filesafe.space/GoP9PdxIiTzltzuaA8Vg/media/6a749d86a36de46d6a536d67.mov" type="video/quicktime">
-            </video>
+            <iframe
+              src="https://player.vimeo.com/video/1216246592?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479&amp;autoplay=1&amp;muted=1"
+              frameborder="0"
+              allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+              allowfullscreen
+              referrerpolicy="strict-origin-when-cross-origin"
+              title="VSL 2 EDITED"
+            ></iframe>
           </div>
         </div>
       </div>
+      <script src="https://player.vimeo.com/api/player.js"></script>
 
       <!-- first choice -->
       <div class="choice">
-        <a class="btn-yes" href="{{CHECKOUT_URL}}">
+        <a class="btn-yes" href="{{CHECKOUT_URL}}" target="_blank" rel="noopener noreferrer" data-checkout>
           <div class="l1">Yes, add The Studio Session</div>
           <div class="l2">Second live session · one time · $47</div>
         </a>
@@ -352,12 +374,13 @@
             <div class="tag">Session two · The Studio Session</div>
             <h3>The Build</h3>
             <p class="role">You bring your three stories back. Together we build your first month of posts, I review your setup, and you leave with content ready to film.</p>
-            <a class="tl-cta" href="{{CHECKOUT_URL}}">Add The Studio Session · $47 <span class="arw">&#8594;</span></a>
+            <a class="tl-cta" href="{{CHECKOUT_URL}}" target="_blank" rel="noopener noreferrer" data-checkout>Add The Studio Session · $47 <span class="arw">&#8594;</span></a>
           </div>
         </div>
         <div class="tl-note">Enough time to sit with your stories, not enough to lose the fire.</div>
       </div>
-    </section>
+    </div>
+  </section>
 
   <!-- ============ deliverables ============ -->
   <section class="offer">
@@ -427,7 +450,7 @@
               <span class="lab">Your price today</span>
               <span class="amt">$47</span>
             </div>
-            <a class="rail-cta" href="{{CHECKOUT_URL}}" id="claim">ADD THE STUDIO SESSION &#8594;</a>
+            <a class="rail-cta" href="{{CHECKOUT_URL}}" id="claim" target="_blank" rel="noopener noreferrer" data-checkout>ADD THE STUDIO SESSION &#8594;</a>
             <div class="serial">Nº 047 · 25 seats only · August 17</div>
           </aside>
         </div>
@@ -436,13 +459,14 @@
   </section>
 
   <!-- ============ scarcity + final ============ -->
-  <section class="band-w" style="padding-top:clamp(40px,6vw,72px);"><div class="wrap">
+  <section class="band-w" style="padding-top:clamp(40px,6vw,72px);">
+    <div class="wrap" style="display:flex;flex-direction:column;align-items:center;">
     <div class="final">
       <div class="cap">The Studio Session is capped at <em>25 seats.</em></div>
       <p class="cap-note">It has to be. The whole point is that I get to your stories personally in the room, and that stops being true past a certain number. When the 25 are gone, your free workshop seat is still yours. The second session isn't.</p>
 
       <div class="choice">
-        <a class="btn-yes" href="{{CHECKOUT_URL}}">
+        <a class="btn-yes" href="{{CHECKOUT_URL}}" target="_blank" rel="noopener noreferrer" data-checkout>
           <div class="l1">Yes, add The Studio Session for $47</div>
           <div class="l2">Second live session · early group access · the full asset library</div>
         </a>
@@ -464,13 +488,11 @@
 
 <script>
 (function(){
-  // The skip control would advance to the confirmation page in production.
-  // Preview only: nothing navigates from here.
   document.querySelectorAll('[data-skip]').forEach(function(b){
     b.addEventListener('click', function(){
       b.textContent = 'Taking you to your confirmation...';
       b.disabled = true;
-      window.location.href = '/workshop/confirmation';
+      (window.smoothNavigate || function(url){ window.location.href = url; })('/workshop/confirmation');
     });
   });
 })();

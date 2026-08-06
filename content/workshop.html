@@ -50,9 +50,6 @@
   .it-w{font-size:3cqw;letter-spacing:.12em;text-transform:uppercase;color:#6B5B49;}
   .hero-media{border-radius:14px;overflow:hidden;background:var(--green);min-height:560px;position:relative;}
   .hero-media img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0;opacity:.88;}
-  .play{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;}
-  .play .ring{width:74px;height:74px;border-radius:50%;background:rgba(20,39,28,.45);border:1px solid rgba(255,255,255,.55);display:flex;align-items:center;justify-content:center;backdrop-filter:blur(2px);}
-  .play .tri{width:0;height:0;border-left:20px solid #fff;border-top:12px solid transparent;border-bottom:12px solid transparent;margin-left:5px;}
   /* trap */
   .trap{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start;padding-top:56px;padding-bottom:56px;}
   .trap h2{font-size:clamp(36px,4vw,54px);margin-top:24px;}
@@ -100,16 +97,41 @@
   .steps3 .rule{border-top:1px solid #D2D2D2;margin-top:12px;padding-top:24px;}
   .steps3 h4{font-family:var(--serif);font-weight:400;font-size:26px;}
   .steps3 p{font-size:14px;line-height:1.65;color:#5C5245;margin-top:14px;}
-  .form-card{background:var(--panel);border-radius:14px;padding:clamp(30px,3.6vw,48px);margin-top:56px;display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center;}
-  .form-card .fh{font-family:var(--serif);font-weight:400;font-size:clamp(26px,2.6vw,36px);line-height:1.1;}
-  .form-card .fd{font-size:14.5px;line-height:1.7;color:#4A4034;margin-top:14px;max-width:40ch;}
+  .reserve-cta{margin-top:56px;text-align:center;}
   form{display:grid;gap:14px;}
   .field label{display:block;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:#8A8172;margin-bottom:7px;font-weight:700;}
   .field input{width:100%;background:#fff;border:1px solid #D2D2D2;border-radius:10px;color:var(--ink);font-family:var(--sans);font-size:15px;padding:15px 16px;}
   .field input:focus{outline:none;border-color:var(--green);}
+  .phone-row{position:relative;display:grid;grid-template-columns:auto 1fr;align-items:stretch;}
+  .phone-row .phone-cc{display:flex;align-items:center;gap:8px;padding:0 12px 0 14px;background:#fff;border:1px solid #D2D2D2;border-right:0;border-radius:10px 0 0 10px;color:var(--ink);font-family:var(--sans);font-size:15px;cursor:pointer;}
+  .phone-row .phone-cc:hover{background:#F7F7F7;}
+  .phone-row.is-open .phone-cc,.phone-row:focus-within .phone-cc,.phone-row:focus-within .phone-national{border-color:var(--green);}
+  .phone-row .phone-cc .flag{font-size:18px;line-height:1;}
+  .phone-row .phone-cc .dial{font-variant-numeric:tabular-nums;font-weight:600;}
+  .phone-row .phone-cc .caret{font-size:10px;color:#8A8172;margin-left:2px;}
+  .phone-row .phone-national{border-radius:0 10px 10px 0;}
+  .phone-row .phone-menu{display:none;position:absolute;left:0;right:0;top:calc(100% + 6px);z-index:5;background:#fff;border:1px solid #D2D2D2;border-radius:10px;max-height:240px;overflow:auto;box-shadow:0 12px 32px rgba(43,30,22,.12);}
+  .phone-row.is-open .phone-menu{display:block;}
+  .phone-row .phone-search{width:100%;border:0;border-bottom:1px solid #E5E5E5;border-radius:10px 10px 0 0;padding:12px 14px;font-family:var(--sans);font-size:14px;color:var(--ink);}
+  .phone-row .phone-search:focus{outline:none;}
+  .phone-row .phone-option{display:flex;align-items:center;gap:10px;width:100%;padding:11px 14px;border:0;background:transparent;color:var(--ink);font-family:var(--sans);font-size:14px;text-align:left;cursor:pointer;}
+  .phone-row .phone-option:hover,.phone-row .phone-option.is-active{background:#F3F3F3;}
+  .phone-row .phone-option .flag{font-size:18px;line-height:1;}
+  .phone-row .phone-option .name{flex:1;}
+  .phone-row .phone-option .dial{color:#8A8172;font-variant-numeric:tabular-nums;}
   .done{display:none;background:var(--green);color:#fff;border-radius:10px;padding:26px;}
   .done .t{font-family:var(--serif);font-size:24px;line-height:1.15;}
   .done .d{font-size:14px;color:rgba(255,255,255,.8);margin-top:10px;line-height:1.6;}
+  /* opt-in modal */
+  .optin-modal{position:fixed;inset:0;z-index:100;display:none;align-items:center;justify-content:center;padding:24px;}
+  .optin-modal.is-open{display:flex;}
+  .optin-modal .optin-backdrop{position:absolute;inset:0;background:rgba(20,39,28,.62);}
+  .optin-modal .optin-panel{position:relative;z-index:1;width:100%;max-width:480px;max-height:min(90vh,720px);overflow:auto;background:var(--panel);border-radius:14px;padding:clamp(28px,4vw,40px);}
+  .optin-modal .optin-close{position:absolute;top:14px;right:16px;width:36px;height:36px;border:0;border-radius:999px;background:transparent;color:var(--ink);font-size:22px;line-height:1;cursor:pointer;}
+  .optin-modal .optin-close:hover{background:rgba(20,39,28,.08);}
+  .optin-modal .fh{font-family:var(--serif);font-weight:400;font-size:clamp(26px,2.6vw,34px);line-height:1.1;padding-right:28px;}
+  .optin-modal .fd{font-size:14.5px;line-height:1.7;color:#4A4034;margin-top:12px;margin-bottom:22px;}
+  body.optin-open{overflow:hidden;}
   /* finale */
   .finale{background:var(--green);color:#fff;padding:84px 32px 70px;text-align:center;background-image:radial-gradient(circle at 30% 20%,rgba(228,205,143,.06),transparent 45%),radial-gradient(circle at 70% 80%,rgba(255,255,255,.04),transparent 45%);}
   .finale .kick{font-weight:700;font-size:12px;letter-spacing:.12em;color:var(--butter);text-transform:uppercase;}
@@ -132,7 +154,7 @@
     .rail{display:none;}
     .hero{grid-template-columns:1fr;}
     .hero-media{min-height:420px;}
-    .trap,.bio-grid,.form-card{grid-template-columns:1fr;}
+    .trap,.bio-grid{grid-template-columns:1fr;}
   }
   @media (max-width:640px){
     .pills,.cards,.steps3{grid-template-columns:1fr;}
@@ -155,7 +177,9 @@
     .bio-img{height:340px;}
     .reserve{padding-top:52px;padding-bottom:52px;}
     .steps3{gap:28px;margin-top:36px;}
-    .form-card{padding:24px 20px;gap:26px;margin-top:36px;}
+    .reserve-cta{margin-top:36px;}
+    .optin-modal{padding:16px;}
+    .optin-modal .optin-panel{padding:24px 20px;}
     .finale{padding:56px 20px 48px;}
     .finale h2{font-size:clamp(38px,11vw,52px);}
     .bigcd{gap:10px;}
@@ -174,14 +198,14 @@
       <div><div class="n" data-m>00</div><div class="l">MIN</div></div><div class="c">:</div>
       <div><div class="n" data-s>00</div><div class="l">SEC</div></div>
     </div>
-    <a href="#reserve" class="btn">Save my spot</a>
+    <button type="button" class="btn" data-open-optin>Save my spot</button>
   </div>
 </header>
 
 <section class="wrap hero">
   <div class="hero-card">
     <h1>Do you want to master content? More attention, more money, <em>&amp; a message people remember.</em></h1>
-    <a href="#reserve" class="btn" style="display:block;margin-top:30px;">Save my spot</a>
+    <button type="button" class="btn" data-open-optin style="display:block;width:100%;margin-top:30px;">Save my spot</button>
     <div class="invite">
       <img src="images/hand-invite.png" alt="A lace-gloved hand holding the workshop invitation">
       <div class="invite-text">
@@ -194,7 +218,6 @@
   </div>
   <div class="hero-media">
     <img src="images/jamie-1.jpg" alt="Jamie Gabrielle">
-    <div class="play"><div class="ring"><div class="tri"></div></div></div>
   </div>
 </section>
 
@@ -229,7 +252,7 @@
       <div class="kick">On The Agenda</div>
       <h2 class="h-bold">90 MINUTES.<br>THREE STORIES.</h2>
       <p class="sub">A practical walkthrough of the method Jamie uses to help women show up online the way they already show up in real life.</p>
-      <a href="#reserve" class="btn obtn" style="margin-top:30px;">Save my spot</a>
+      <button type="button" class="btn obtn" data-open-optin style="margin-top:30px;">Save my spot</button>
     </div>
     <div class="rail" aria-hidden="true">
       <div class="line"></div>
@@ -270,7 +293,7 @@
     <div>
       <div class="num">01</div><div class="rule"></div>
       <h4>Reserve Your Seat</h4>
-      <p>Fill out the short form below to claim your free seat for the live workshop with Jamie.</p>
+      <p>Tap Save my spot and claim your free seat for the live workshop with Jamie.</p>
     </div>
     <div>
       <div class="num">02</div><div class="rule"></div>
@@ -283,36 +306,8 @@
       <p>Bring a notepad and walk away with your three stories and exactly what to post first.</p>
     </div>
   </div>
-  <div class="form-card">
-    <div>
-      <div class="fh">Save your seat for August 13.</div>
-      <p class="fd">The room is capped so everyone gets seen. First name, last name, email, phone — that's it. I'll text you the morning we go live.</p>
-    </div>
-    <div>
-      <form data-form novalidate>
-        <div class="field">
-          <label for="r-name">First name</label>
-          <input id="r-name" name="name" type="text" placeholder="Your first name" autocomplete="given-name" required>
-        </div>
-        <div class="field">
-          <label for="r-last">Last name</label>
-          <input id="r-last" name="lastName" type="text" placeholder="Your last name" autocomplete="family-name" required>
-        </div>
-        <div class="field">
-          <label for="r-email">Email</label>
-          <input id="r-email" name="email" type="email" placeholder="you@email.com" autocomplete="email" required>
-        </div>
-        <div class="field">
-          <label for="r-phone">Phone number</label>
-          <input id="r-phone" name="phone" type="tel" placeholder="(555) 000-0000" autocomplete="tel" required>
-        </div>
-        <button class="btn" type="submit" style="width:100%;">Save my spot</button>
-      </form>
-      <div class="done" data-done>
-        <div class="t">You're in.</div>
-        <div class="d">Your seat is saved. Check your inbox for the confirmation, and watch for a text the morning of August 13.</div>
-      </div>
-    </div>
+  <div class="reserve-cta">
+    <button type="button" class="btn" data-open-optin>Save my spot</button>
   </div>
 </section>
 
@@ -327,10 +322,53 @@
       <div><div class="n" data-m>00</div><div class="l">MIN</div></div><div class="c">:</div>
       <div><div class="n" data-s>00</div><div class="l">SEC</div></div>
     </div>
-    <a href="#reserve" class="btn obtn" style="margin-top:44px;">Save my spot</a>
+    <button type="button" class="btn obtn" data-open-optin style="margin-top:44px;">Save my spot</button>
     <p class="host">Hosted by Jamie Gabrielle · The Visible Method · Live on Zoom</p>
   </div>
 </section>
+
+<div class="optin-modal" data-optin-modal aria-hidden="true">
+  <div class="optin-backdrop" data-close-optin></div>
+  <div class="optin-panel" role="dialog" aria-modal="true" aria-labelledby="optin-title">
+    <button type="button" class="optin-close" data-close-optin aria-label="Close">&times;</button>
+    <div class="fh" id="optin-title">Save your seat for August 13.</div>
+    <p class="fd">The room is capped so everyone gets seen. First name, last name, email, phone — that's it. I'll text you the morning we go live.</p>
+    <form data-form novalidate>
+      <div class="field">
+        <label for="r-name">First name</label>
+        <input id="r-name" name="name" type="text" placeholder="Your first name" autocomplete="given-name" required>
+      </div>
+      <div class="field">
+        <label for="r-last">Last name</label>
+        <input id="r-last" name="lastName" type="text" placeholder="Your last name" autocomplete="family-name" required>
+      </div>
+      <div class="field">
+        <label for="r-email">Email</label>
+        <input id="r-email" name="email" type="email" placeholder="you@email.com" autocomplete="email" required>
+      </div>
+      <div class="field">
+        <label for="r-phone">Phone number</label>
+        <div class="phone-row" data-phone-row>
+          <button type="button" class="phone-cc" data-cc-btn aria-haspopup="listbox" aria-expanded="false" aria-label="Country code">
+            <span class="flag" data-cc-flag>🇺🇸</span>
+            <span class="dial" data-cc-dial>+1</span>
+            <span class="caret" aria-hidden="true">▾</span>
+          </button>
+          <input id="r-phone" class="phone-national" name="phone_national" type="tel" placeholder="(555) 000-0000" autocomplete="tel-national" inputmode="tel" required data-phone-national>
+          <div class="phone-menu" data-cc-menu role="listbox" hidden>
+            <input type="search" class="phone-search" data-cc-search placeholder="Search country" aria-label="Search country">
+            <div data-cc-options></div>
+          </div>
+        </div>
+      </div>
+      <button class="btn" type="submit" style="width:100%;">Save my spot</button>
+    </form>
+    <div class="done" data-done>
+      <div class="t">You're in.</div>
+      <div class="d">Your seat is saved. Check your inbox for the confirmation, and watch for a text the morning of August 13.</div>
+    </div>
+  </div>
+</div>
 
 <footer>
   <div class="top">
@@ -366,6 +404,211 @@
     return payload;
   }
 
+  function flagEmoji(iso) {
+    return iso
+      .toUpperCase()
+      .replace(/./g, function(char) {
+        return String.fromCodePoint(127397 + char.charCodeAt(0));
+      });
+  }
+
+  var COUNTRIES = [
+    { iso: 'US', name: 'United States', dial: '1' },
+    { iso: 'CA', name: 'Canada', dial: '1' },
+    { iso: 'GB', name: 'United Kingdom', dial: '44' },
+    { iso: 'AU', name: 'Australia', dial: '61' },
+    { iso: 'NZ', name: 'New Zealand', dial: '64' },
+    { iso: 'IE', name: 'Ireland', dial: '353' },
+    { iso: 'MX', name: 'Mexico', dial: '52' },
+    { iso: 'BR', name: 'Brazil', dial: '55' },
+    { iso: 'AR', name: 'Argentina', dial: '54' },
+    { iso: 'CL', name: 'Chile', dial: '56' },
+    { iso: 'CO', name: 'Colombia', dial: '57' },
+    { iso: 'PE', name: 'Peru', dial: '51' },
+    { iso: 'DE', name: 'Germany', dial: '49' },
+    { iso: 'FR', name: 'France', dial: '33' },
+    { iso: 'ES', name: 'Spain', dial: '34' },
+    { iso: 'IT', name: 'Italy', dial: '39' },
+    { iso: 'PT', name: 'Portugal', dial: '351' },
+    { iso: 'NL', name: 'Netherlands', dial: '31' },
+    { iso: 'BE', name: 'Belgium', dial: '32' },
+    { iso: 'CH', name: 'Switzerland', dial: '41' },
+    { iso: 'AT', name: 'Austria', dial: '43' },
+    { iso: 'SE', name: 'Sweden', dial: '46' },
+    { iso: 'NO', name: 'Norway', dial: '47' },
+    { iso: 'DK', name: 'Denmark', dial: '45' },
+    { iso: 'FI', name: 'Finland', dial: '358' },
+    { iso: 'PL', name: 'Poland', dial: '48' },
+    { iso: 'CZ', name: 'Czechia', dial: '420' },
+    { iso: 'RO', name: 'Romania', dial: '40' },
+    { iso: 'GR', name: 'Greece', dial: '30' },
+    { iso: 'TR', name: 'Turkey', dial: '90' },
+    { iso: 'UA', name: 'Ukraine', dial: '380' },
+    { iso: 'RU', name: 'Russia', dial: '7' },
+    { iso: 'IN', name: 'India', dial: '91' },
+    { iso: 'PK', name: 'Pakistan', dial: '92' },
+    { iso: 'BD', name: 'Bangladesh', dial: '880' },
+    { iso: 'SG', name: 'Singapore', dial: '65' },
+    { iso: 'MY', name: 'Malaysia', dial: '60' },
+    { iso: 'PH', name: 'Philippines', dial: '63' },
+    { iso: 'ID', name: 'Indonesia', dial: '62' },
+    { iso: 'TH', name: 'Thailand', dial: '66' },
+    { iso: 'VN', name: 'Vietnam', dial: '84' },
+    { iso: 'JP', name: 'Japan', dial: '81' },
+    { iso: 'KR', name: 'South Korea', dial: '82' },
+    { iso: 'CN', name: 'China', dial: '86' },
+    { iso: 'HK', name: 'Hong Kong', dial: '852' },
+    { iso: 'TW', name: 'Taiwan', dial: '886' },
+    { iso: 'AE', name: 'United Arab Emirates', dial: '971' },
+    { iso: 'SA', name: 'Saudi Arabia', dial: '966' },
+    { iso: 'IL', name: 'Israel', dial: '972' },
+    { iso: 'ZA', name: 'South Africa', dial: '27' },
+    { iso: 'NG', name: 'Nigeria', dial: '234' },
+    { iso: 'KE', name: 'Kenya', dial: '254' },
+    { iso: 'EG', name: 'Egypt', dial: '20' },
+    { iso: 'GH', name: 'Ghana', dial: '233' },
+  ];
+
+  /**
+   * @param {HTMLElement} root
+   * @returns {{ getE164Phone: () => string, isValid: () => boolean, markInvalid: () => void, clearInvalid: () => void }}
+   */
+  function initCountryPhone(root) {
+    var btn = root.querySelector('[data-cc-btn]');
+    var menu = root.querySelector('[data-cc-menu]');
+    var optionsEl = root.querySelector('[data-cc-options]');
+    var search = root.querySelector('[data-cc-search]');
+    var input = root.querySelector('[data-phone-national]');
+    var flagEl = root.querySelector('[data-cc-flag]');
+    var dialEl = root.querySelector('[data-cc-dial]');
+    var selected = COUNTRIES[0];
+
+    function setCountry(country, opts) {
+      selected = country;
+      flagEl.textContent = flagEmoji(country.iso);
+      dialEl.textContent = '+' + country.dial;
+      optionsEl.querySelectorAll('.phone-option').forEach(function(option) {
+        option.classList.toggle('is-active', option.getAttribute('data-iso') === country.iso);
+      });
+      if (opts && opts.stripDialFromInput) {
+        var raw = input.value.trim();
+        if (raw.charAt(0) === '+') {
+          var digits = raw.replace(/\D/g, '');
+          if (digits.indexOf(country.dial) === 0) {
+            input.value = digits.slice(country.dial.length);
+          }
+        }
+      }
+    }
+
+    function openMenu() {
+      root.classList.add('is-open');
+      menu.hidden = false;
+      btn.setAttribute('aria-expanded', 'true');
+      search.value = '';
+      renderOptions('');
+      search.focus();
+    }
+
+    function closeMenu() {
+      root.classList.remove('is-open');
+      menu.hidden = true;
+      btn.setAttribute('aria-expanded', 'false');
+    }
+
+    function renderOptions(query) {
+      var q = (query || '').trim().toLowerCase();
+      optionsEl.innerHTML = '';
+      COUNTRIES.forEach(function(country) {
+        var hay = (country.name + ' ' + country.iso + ' +' + country.dial).toLowerCase();
+        if (q && hay.indexOf(q) === -1) return;
+        var option = document.createElement('button');
+        option.type = 'button';
+        option.className = 'phone-option' + (country.iso === selected.iso ? ' is-active' : '');
+        option.setAttribute('data-iso', country.iso);
+        option.setAttribute('role', 'option');
+        option.innerHTML =
+          '<span class="flag">' + flagEmoji(country.iso) + '</span>' +
+          '<span class="name">' + country.name + '</span>' +
+          '<span class="dial">+' + country.dial + '</span>';
+        option.addEventListener('click', function() {
+          setCountry(country);
+          closeMenu();
+          input.focus();
+        });
+        optionsEl.appendChild(option);
+      });
+    }
+
+    function matchDialFromInput(value) {
+      var raw = (value || '').trim();
+      if (raw.charAt(0) !== '+') return;
+      var digits = raw.replace(/\D/g, '');
+      if (!digits) return;
+      var match = null;
+      for (var i = 0; i < COUNTRIES.length; i++) {
+        var country = COUNTRIES[i];
+        if (digits.indexOf(country.dial) === 0) {
+          if (!match || country.dial.length > match.dial.length) match = country;
+        }
+      }
+      if (match) setCountry(match);
+    }
+
+    function getE164Phone() {
+      var raw = input.value.trim();
+      if (!raw) return '';
+      if (raw.charAt(0) === '+') return '+' + raw.replace(/\D/g, '');
+      var national = raw.replace(/\D/g, '').replace(/^0+/, '');
+      if (!national) return '';
+      return '+' + selected.dial + national;
+    }
+
+    function isValid() {
+      var phone = getE164Phone();
+      return phone.replace(/\D/g, '').length >= 8;
+    }
+
+    function markInvalid() {
+      input.style.borderColor = '#B4462F';
+      btn.style.borderColor = '#B4462F';
+    }
+
+    function clearInvalid() {
+      input.style.borderColor = '';
+      btn.style.borderColor = '';
+    }
+
+    btn.addEventListener('click', function(ev) {
+      ev.preventDefault();
+      if (root.classList.contains('is-open')) closeMenu();
+      else openMenu();
+    });
+
+    search.addEventListener('input', function() {
+      renderOptions(search.value);
+    });
+
+    input.addEventListener('input', function() {
+      clearInvalid();
+      matchDialFromInput(input.value);
+    });
+
+    input.addEventListener('paste', function() {
+      setTimeout(function() {
+        matchDialFromInput(input.value);
+      }, 0);
+    });
+
+    document.addEventListener('click', function(ev) {
+      if (!root.contains(ev.target)) closeMenu();
+    });
+
+    renderOptions('');
+    setCountry(selected);
+    return { getE164Phone: getE164Phone, isValid: isValid, markInvalid: markInvalid, clearInvalid: clearInvalid, closeMenu: closeMenu };
+  }
+
   var TARGET = new Date('2026-08-13T13:00:00-07:00').getTime();
   function pad(n){ return String(n).padStart(2,'0'); }
   function tick(){
@@ -381,15 +624,61 @@
   }
   tick(); setInterval(tick, 1000);
 
+  var modal = document.querySelector('[data-optin-modal]');
   var form = document.querySelector('[data-form]');
   var done = document.querySelector('[data-done]');
+  var phoneRow = document.querySelector('[data-phone-row]');
+  var phoneField = phoneRow ? initCountryPhone(phoneRow) : null;
+
+  function openOptin() {
+    if (!modal) return;
+    modal.classList.add('is-open');
+    modal.setAttribute('aria-hidden', 'false');
+    document.body.classList.add('optin-open');
+    var first = form && form.querySelector('input');
+    if (first) first.focus();
+  }
+
+  function closeOptin() {
+    if (!modal) return;
+    if (phoneField) phoneField.closeMenu();
+    modal.classList.remove('is-open');
+    modal.setAttribute('aria-hidden', 'true');
+    document.body.classList.remove('optin-open');
+  }
+
+  document.querySelectorAll('[data-open-optin]').forEach(function(el){
+    el.addEventListener('click', function(ev){
+      ev.preventDefault();
+      openOptin();
+    });
+  });
+
+  document.querySelectorAll('[data-close-optin]').forEach(function(el){
+    el.addEventListener('click', closeOptin);
+  });
+
+  document.addEventListener('keydown', function(ev){
+    if (ev.key !== 'Escape') return;
+    if (phoneRow && phoneRow.classList.contains('is-open')) {
+      phoneField.closeMenu();
+      return;
+    }
+    closeOptin();
+  });
+
   if (form) {
     form.addEventListener('submit', function(ev){
       ev.preventDefault();
       var ok = true;
       form.querySelectorAll('input[required]').forEach(function(i){
+        if (i.hasAttribute('data-phone-national')) return;
         if (!i.value.trim()) { ok = false; i.style.borderColor = '#B4462F'; }
       });
+      if (phoneField && !phoneField.isValid()) {
+        ok = false;
+        phoneField.markInvalid();
+      }
       if (!ok) return;
 
       var btn = form.querySelector('button[type="submit"]');
@@ -402,12 +691,12 @@
           form.querySelector('#r-name').value.trim(),
           form.querySelector('#r-last').value.trim(),
           form.querySelector('#r-email').value.trim(),
-          form.querySelector('#r-phone').value.trim(),
+          phoneField ? phoneField.getE164Phone() : form.querySelector('#r-phone').value.trim(),
         )),
       })
       .then(function(res){
         if (!res.ok) throw new Error('submit failed');
-        window.location.href = '/studio-session';
+        (window.smoothNavigate || function(url){ window.location.href = url; })('/studio-session');
       })
       .catch(function(){
         if (btn) btn.disabled = false;

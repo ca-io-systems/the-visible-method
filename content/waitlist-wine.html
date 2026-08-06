@@ -258,7 +258,7 @@
     })
     .then(function(res){
       if (!res.ok) throw new Error('submit failed');
-      window.location.href = '/waitlist/thank-you';
+      (window.smoothNavigate || function(url){ window.location.href = url; })('/waitlist/thank-you');
     })
     .catch(function(){
       if (btn) btn.disabled = false;

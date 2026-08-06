@@ -1,0 +1,1 @@
+Tomorrow {{custom_values.webby__vip_qa_date_for_opt_in_message}}. Studio Session. Bring the post you've been avoiding. Link's in your email.

@@ -1,0 +1,1 @@
+Hey it's Jamie. You're in for {{custom_values.webby__event_date_for_opt_in_message}}. Your Zoom link is in your email. Save it. From tomorrow I send you one idea a day. Reply STOP to stop.

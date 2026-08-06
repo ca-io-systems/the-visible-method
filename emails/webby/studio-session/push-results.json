@@ -1,0 +1,15 @@
+[
+  {
+    "slug": "studio-session-email-1-confirmation",
+    "name": "Studio Session | Email 1 - Seat booked",
+    "templateId": "6a74f61ebfc10537e45dd765",
+    "folderId": "6a74f61e46f95ee32ba5ca6b",
+    "folderName": "Webby | Studio Session",
+    "subject": "Your Studio Session seat is booked.",
+    "previewText": "August 17th, 1 PM PT / 4 PM ET. Zoom and the VIP group are inside.",
+    "savedSubjectLine": "Your Studio Session seat is booked.",
+    "savedPreviewText": "August 17th, 1 PM PT / 4 PM ET. Zoom and the VIP group are inside.",
+    "createStatus": "create",
+    "patchOk": true
+  }
+]

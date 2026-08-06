@@ -1,0 +1,19 @@
+{
+  "sourceName": "Studio Session | Email 1 - Seat booked",
+  "proposedName": "Studio Session | Email 1 - Seat booked",
+  "subject": "Your Studio Session seat is booked.",
+  "previewText": "August 17th, 1 PM PT / 4 PM ET. Zoom and the VIP group are inside.",
+  "timing": "Immediate — Studio Session / VIP buyers",
+  "designNotes": {
+    "reference": "Masterclass Email 1 formcard — dedicated VIP/Studio Session confirmation",
+    "designSystem": "Formcard 600px. Single event block. Zoom CTA. VIP WhatsApp body link. Body line-height 1.5.",
+    "pushStatus": "draft — awaiting design approval",
+    "mergeTagsUsed": [
+      "{{custom_values.webby__vip_qa_event_day}}",
+      "{{custom_values.webby__vip_qa_date__time}}",
+      "{{custom_values.webby__vip_qa_date_for_opt_in_message}}",
+      "{{custom_values.webby__vip_qa_zoom_link}}",
+      "{{custom_values.webby__whatsapp_group_link}}"
+    ]
+  }
+}

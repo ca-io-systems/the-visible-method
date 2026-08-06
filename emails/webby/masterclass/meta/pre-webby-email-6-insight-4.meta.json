@@ -1,0 +1,13 @@
+{
+  "sourceName": "Pre-Webby | Email 6 - a confession",
+  "proposedName": "Pre-Webby | Email 6 - a confession",
+  "subject": "a confession about the casual videos",
+  "previewText": "The videos that look unplanned were planned. Sometimes days before.",
+  "timing": "Sun 10am — all",
+  "designNotes": {
+    "reference": "https://the-visible-method.vercel.app/waitlist — formcard shell",
+    "designSystem": "Formcard 600px. Playfair headline. Link CTAs where applicable.",
+    "pushStatus": "local only — awaiting go signal",
+    "mergeTagsUsed": []
+  }
+}

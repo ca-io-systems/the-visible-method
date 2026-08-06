@@ -1,8 +1,7 @@
 /**
- * push-pre-webby
- * args: [--dry-run] [--update] [--only <slug>]
- * returns: creates HTML templates in GHL folder "Webby | Email Templates"
- *          with subjectLine + previewText from misc/meta/*.meta.json
+ * push-pre-webby (Webby email push)
+ * args: --sequence masterclass|studio-session [--dry-run] [--update] [--only <slug>]
+ * returns: creates HTML templates in the GHL folder from sequence config
  */
 import { dirname, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
@@ -10,7 +9,17 @@ import { fileURLToPath } from "node:url";
 const repoRoot = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const webbyRoot = resolve(repoRoot, "emails/webby");
 const envPath = resolve(webbyRoot, "misc/.env");
-const configPath = resolve(webbyRoot, "misc/config.json");
+
+const sequenceIdx = Bun.argv.indexOf("--sequence");
+const sequence =
+  sequenceIdx >= 0 ? Bun.argv[sequenceIdx + 1] : "masterclass";
+if (!sequence || sequence.startsWith("--")) {
+  throw new Error("Usage: --sequence masterclass|studio-session");
+}
+
+const sequenceRoot = resolve(webbyRoot, sequence);
+const configPath = resolve(sequenceRoot, "config.json");
+const resultsPath = resolve(sequenceRoot, "push-results.json");
 
 const envText = await Bun.file(envPath).text();
 const pit = envText.match(/^GHL_PIT=(.+)$/m)?.[1]?.trim();
@@ -49,8 +58,7 @@ type BuilderItem = {
 };
 
 async function loadExistingResults(): Promise<Map<string, PushResult>> {
-  const path = resolve(webbyRoot, "misc/push-results-pre-webby.json");
-  const file = Bun.file(path);
+  const file = Bun.file(resultsPath);
   if (!(await file.exists())) return new Map();
   const rows = (await file.json()) as PushResult[];
   return new Map(rows.filter((row) => row.templateId).map((row) => [row.slug, row]));
@@ -177,16 +185,24 @@ if (onlySlug && slugs.length === 0) {
   throw new Error(`Unknown slug: ${onlySlug}`);
 }
 
-const existingBySlug = updateExisting ? await loadExistingResults() : new Map<string, PushResult>();
+const existingBySlug = await loadExistingResults();
 const folderId = dryRun ? "dry-run" : await ensureFolder(folderName);
 
-console.log(`\n=== PRE-WEBBY → ${folderName}${dryRun ? " (dry-run)" : ` (${folderId})`}${updateExisting ? " [update]" : ""} ===`);
+console.log(
+  `\n=== ${sequence.toUpperCase()} → ${folderName}${dryRun ? " (dry-run)" : ` (${folderId})`}${updateExisting ? " [update]" : ""} ===`,
+);
 
-const results: Array<Record<string, unknown>> = [];
+const resultsBySlug = new Map<string, Record<string, unknown>>();
+if (await Bun.file(resultsPath).exists()) {
+  const prior = (await Bun.file(resultsPath).json()) as Array<Record<string, unknown>>;
+  for (const row of prior) {
+    if (typeof row.slug === "string") resultsBySlug.set(row.slug, row);
+  }
+}
 
 for (const slug of slugs) {
-  const html = await Bun.file(resolve(webbyRoot, `${slug}.html`)).text();
-  const meta = (await Bun.file(resolve(webbyRoot, `misc/meta/${slug}.meta.json`)).json()) as Meta;
+  const html = await Bun.file(resolve(sequenceRoot, `${slug}.html`)).text();
+  const meta = (await Bun.file(resolve(sequenceRoot, `meta/${slug}.meta.json`)).json()) as Meta;
   const name = meta.proposedName;
 
   console.log(`\n== ${slug}`);
@@ -195,28 +211,36 @@ for (const slug of slugs) {
   console.log(`preview: ${meta.previewText ?? "(none)"}`);
 
   if (dryRun) {
-    results.push({ slug, name, subject: meta.subject, previewText: meta.previewText, dryRun: true });
+    resultsBySlug.set(slug, {
+      slug,
+      name,
+      subject: meta.subject,
+      previewText: meta.previewText,
+      dryRun: true,
+    });
     continue;
   }
 
   const existing = existingBySlug.get(slug);
   let templateId = existing?.templateId;
 
-  if (!updateExisting) {
+  if (updateExisting) {
+    if (!templateId) {
+      throw new Error(`Missing templateId for ${slug} in ${resultsPath}`);
+    }
+    console.log("update existing template:", templateId);
+  } else if (templateId) {
+    console.log("template already exists, patching:", templateId);
+  } else {
     const created = await createHtmlTemplate(name, folderId);
     templateId = (created.json as { id?: string }).id;
     console.log("create status:", created.status, "id:", templateId);
 
     if (!created.ok || !templateId) {
-      results.push({ slug, name, error: "create_failed", create: created });
+      resultsBySlug.set(slug, { slug, name, error: "create_failed", create: created });
       console.error("FAILED create — stopping");
       break;
     }
-  } else {
-    if (!templateId) {
-      throw new Error(`Missing templateId for ${slug} in push-results-pre-webby.json`);
-    }
-    console.log("update existing template:", templateId);
   }
 
   const patched = await patchTemplate(templateId, html, meta.subject, meta.previewText);
@@ -225,7 +249,7 @@ for (const slug of slugs) {
   console.log("saved subjectLine:", settingsJson.subjectLine);
   console.log("saved previewText:", settingsJson.previewText);
 
-  results.push({
+  resultsBySlug.set(slug, {
     slug,
     name,
     templateId,
@@ -235,7 +259,7 @@ for (const slug of slugs) {
     previewText: meta.previewText,
     savedSubjectLine: settingsJson.subjectLine,
     savedPreviewText: settingsJson.previewText,
-    createStatus: updateExisting ? "update" : "create",
+    createStatus: existing?.templateId ? "update" : "create",
     patchOk: patched.ok,
   });
 
@@ -245,9 +269,9 @@ for (const slug of slugs) {
   }
 }
 
-const outPath = resolve(webbyRoot, "misc/push-results-pre-webby.json");
-await Bun.write(outPath, `${JSON.stringify(results, null, 2)}\n`);
-console.log(`\nWrote ${outPath}`);
+const results = [...resultsBySlug.values()];
+await Bun.write(resultsPath, `${JSON.stringify(results, null, 2)}\n`);
+console.log(`\nWrote ${resultsPath}`);
 
 if (!dryRun && folderId !== "dry-run") {
   const list = await listBuilderItems(folderId);

@@ -1,0 +1,17 @@
+{
+  "sourceName": "Studio Session | Email 2 - Tomorrow",
+  "proposedName": "Studio Session | Email 2 - Tomorrow",
+  "subject": "tomorrow. bring the thing you've been avoiding.",
+  "previewText": "Tomorrow — August 17th, 1 PM PT / 4 PM ET. Small room. Twenty-five seats.",
+  "timing": "Sun Aug 16 · ~12pm — studio-session tag",
+  "designNotes": {
+    "reference": "Masterclass Email 9 (tomorrow) — VIP/Studio Session variant",
+    "designSystem": "Formcard 600px. Zoom CTA. vip_qa merge tags. Body line-height 1.5.",
+    "pushStatus": "draft — awaiting design approval",
+    "audience": "Has tag studio-session",
+    "mergeTagsUsed": [
+      "{{custom_values.webby__vip_qa_date__time}}",
+      "{{custom_values.webby__vip_qa_zoom_link}}"
+    ]
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "sourceName": "Pre-Webby | Email 4 - the fear is",
+  "proposedName": "Pre-Webby | Email 4 - the fear is",
+  "subject": "the fear is rational, actually",
+  "previewText": "Your followers are the wrong ones. And you picked them — not on purpose.",
+  "timing": "Fri 8am — all",
+  "designNotes": {
+    "reference": "https://the-visible-method.vercel.app/waitlist — formcard shell",
+    "designSystem": "Formcard 600px. Playfair headline. Link CTAs where applicable.",
+    "pushStatus": "local only — awaiting go signal",
+    "mergeTagsUsed": []
+  }
+}

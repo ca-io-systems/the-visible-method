@@ -1,0 +1,20 @@
+{
+  "sourceName": "Pre-Webby | Email 1 - You're in. Three",
+  "proposedName": "Pre-Webby | Email 1 - You're in. Three",
+  "subject": "You're in. Three things inside.",
+  "previewText": "You're registered. Your Zoom link, calendar, and WhatsApp group are inside.",
+  "timing": "Immediate — all registrants",
+  "designNotes": {
+    "reference": "https://the-visible-method.vercel.app/waitlist — formcard shell",
+    "designSystem": "Formcard 600px. Zoom + calendar two-column pills. WhatsApp bold underlined body-text link. Body line-height 1.5.",
+    "pushStatus": "local only — awaiting go signal",
+    "mergeTagsUsed": [
+      "{{custom_values.webby__event_day}}",
+      "{{custom_values.webby__event_date__time}}",
+      "{{custom_values.webby__event_date__time_2}}",
+      "{{custom_values.webby__event_zoom_link}}",
+      "{{custom_values.webby__event_gcal_link}}",
+      "{{custom_values.webby__whatsapp_group_link_free}}"
+    ]
+  }
+}

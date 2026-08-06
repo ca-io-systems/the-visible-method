@@ -50,7 +50,12 @@
     "eventDay": "{{custom_values.webby__event_day}}",
     "eventDayTime": "{{custom_values.webby__event_date__time_2}}",
     "whatsappGroupFree": "{{custom_values.webby__whatsapp_group_link_free}}",
+    "whatsappGroupVip": "{{custom_values.webby__whatsapp_group_link}}",
     "eventGcalLink": "{{custom_values.webby__event_gcal_link}}",
+    "vipQaEventDay": "{{custom_values.webby__vip_qa_event_day}}",
+    "vipQaDateTime": "{{custom_values.webby__vip_qa_date__time}}",
+    "vipQaDateOptIn": "{{custom_values.webby__vip_qa_date_for_opt_in_message}}",
+    "vipQaZoomLink": "{{custom_values.webby__vip_qa_zoom_link}}",
     "visibleVoiceKitLink": "{{custom_values.webby__whop_payment__47}}",
     "waitlistUrl": "https://the-visible-method.vercel.app/waitlist"
   }

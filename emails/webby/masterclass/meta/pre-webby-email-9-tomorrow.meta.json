@@ -1,0 +1,16 @@
+{
+  "sourceName": "Pre-Webby | Email 9 - tomorrow. bring your",
+  "proposedName": "Pre-Webby | Email 9 - tomorrow. bring your",
+  "subject": "tomorrow. bring your three answers.",
+  "previewText": "Tomorrow at 12pm EST. Bring your three answers. Live profile reviews aren't in the replay.",
+  "timing": "Wed 12pm — all",
+  "designNotes": {
+    "reference": "https://the-visible-method.vercel.app/waitlist — formcard shell",
+    "designSystem": "Formcard 600px. Playfair headline. Link CTAs where applicable.",
+    "pushStatus": "local only — awaiting go signal",
+    "mergeTagsUsed": [
+      "{{custom_values.webby__event_date__time_2}}",
+      "{{custom_values.webby__event_zoom_link}}"
+    ]
+  }
+}

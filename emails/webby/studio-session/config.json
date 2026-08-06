@@ -1,0 +1,13 @@
+{
+  "client": "the-visible-method",
+  "sequence": "studio-session",
+  "folderName": "Webby | Studio Session",
+  "brandUrl": "https://the-visible-method.vercel.app/studio-session",
+  "slugs": [
+    "studio-session-email-1-confirmation",
+    "studio-session-email-2-tomorrow",
+    "studio-session-email-3-2-hours",
+    "studio-session-email-4-live-plus-20"
+  ],
+  "notes": "Studio Session ($47) post-purchase + reminders. Filter GHL workflow on tag studio-session. Push with: bun run push:webby -- --sequence studio-session [--dry-run] [--update] [--only <slug>]"
+}

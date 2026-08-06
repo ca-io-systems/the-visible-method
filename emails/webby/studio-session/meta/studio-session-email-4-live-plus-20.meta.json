@@ -1,0 +1,16 @@
+{
+  "sourceName": "Studio Session | Email 4 - she's already in the room",
+  "proposedName": "Studio Session | Email 4 - she's already in the room",
+  "subject": "she's already in the room",
+  "previewText": "She's twenty minutes in. The small room is open.",
+  "timing": "Live + 20 min — studio-session tag, not yet joined",
+  "designNotes": {
+    "reference": "Masterclass Email 11 (live + 20) — VIP/Studio Session variant",
+    "designSystem": "Formcard 600px. Zoom CTA. vip_qa merge tags. Body line-height 1.5.",
+    "pushStatus": "draft — awaiting design approval",
+    "audience": "Has tag studio-session · not yet joined if available",
+    "mergeTagsUsed": [
+      "{{custom_values.webby__vip_qa_zoom_link}}"
+    ]
+  }
+}

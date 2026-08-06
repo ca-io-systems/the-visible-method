@@ -1,0 +1,20 @@
+{
+  "client": "the-visible-method",
+  "sequence": "masterclass",
+  "folderName": "Webby | Masterclass",
+  "brandUrl": "https://the-visible-method.vercel.app/workshop",
+  "slugs": [
+    "pre-webby-email-1",
+    "pre-webby-email-2-vip",
+    "pre-webby-email-3-insight-1",
+    "pre-webby-email-4-insight-2",
+    "pre-webby-email-5-insight-3",
+    "pre-webby-email-6-insight-4",
+    "pre-webby-email-7-insight-5",
+    "pre-webby-email-8-insight-6",
+    "pre-webby-email-9-tomorrow",
+    "pre-webby-email-10-2-hours",
+    "pre-webby-email-11-live-plus-20"
+  ],
+  "notes": "Masterclass (workshop) nurture. Push with: bun run push:webby -- --sequence masterclass [--dry-run] [--update] [--only <slug>]"
+}

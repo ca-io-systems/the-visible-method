@@ -1,0 +1,16 @@
+{
+  "sourceName": "Pre-Webby | Email 2 - you're in, but",
+  "proposedName": "Pre-Webby | Email 2 - you're in, but",
+  "subject": "you're in, but you might want this too",
+  "previewText": "The workshop is big. There's a smaller room if you want your account looked at.",
+  "timing": "+10 minutes — all registrants",
+  "designNotes": {
+    "reference": "https://the-visible-method.vercel.app/waitlist — formcard shell",
+    "designSystem": "Formcard 600px. Playfair headline. Link CTAs where applicable.",
+    "pushStatus": "local only — awaiting go signal",
+    "mergeTagsUsed": [
+      "{{custom_values.webby__event_day}}",
+      "{{custom_values.webby__whop_payment__47}}"
+    ]
+  }
+}

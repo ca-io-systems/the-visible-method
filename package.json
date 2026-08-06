@@ -7,12 +7,14 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "push:pre-webby": "bun scripts/push-pre-webby.ts"
+    "push:webby": "bun scripts/push-pre-webby.ts",
+    "push:pre-webby": "bun scripts/push-pre-webby.ts --sequence masterclass"
   },
   "dependencies": {
     "next": "^15.4.5",
     "react": "^19.1.1",
-    "react-dom": "^19.1.1"
+    "react-dom": "^19.1.1",
+    "stripe": "^22.4.0"
   },
   "devDependencies": {
     "@types/node": "^22.17.0",

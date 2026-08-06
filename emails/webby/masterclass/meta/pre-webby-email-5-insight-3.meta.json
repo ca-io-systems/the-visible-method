@@ -1,0 +1,13 @@
+{
+  "sourceName": "Pre-Webby | Email 5 - you can do",
+  "proposedName": "Pre-Webby | Email 5 - you can do",
+  "subject": "you can do this one today",
+  "previewText": "Your last ten real conversations are a month of content. You already did the hard part.",
+  "timing": "Sat 9am — all",
+  "designNotes": {
+    "reference": "https://the-visible-method.vercel.app/waitlist — formcard shell",
+    "designSystem": "Formcard 600px. Playfair headline. Link CTAs where applicable.",
+    "pushStatus": "local only — awaiting go signal",
+    "mergeTagsUsed": []
+  }
+}

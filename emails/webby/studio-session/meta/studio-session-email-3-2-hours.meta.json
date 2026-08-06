@@ -1,0 +1,16 @@
+{
+  "sourceName": "Studio Session | Email 3 - 2 hours",
+  "proposedName": "Studio Session | Email 3 - 2 hours",
+  "subject": "2 hours",
+  "previewText": "Two hours. Come in five minutes early.",
+  "timing": "Mon Aug 17 · 2hr before — studio-session tag",
+  "designNotes": {
+    "reference": "Masterclass Email 10 (2 hours) — VIP/Studio Session variant",
+    "designSystem": "Formcard 600px. Zoom CTA. vip_qa merge tags. Body line-height 1.5.",
+    "pushStatus": "draft — awaiting design approval",
+    "audience": "Has tag studio-session",
+    "mergeTagsUsed": [
+      "{{custom_values.webby__vip_qa_zoom_link}}"
+    ]
+  }
+}

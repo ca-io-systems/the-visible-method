@@ -123,7 +123,7 @@
   .done .t{font-family:var(--serif);font-size:24px;line-height:1.15;}
   .done .d{font-size:14px;color:rgba(255,255,255,.8);margin-top:10px;line-height:1.6;}
   /* opt-in modal */
-  .optin-modal{position:fixed;inset:0;z-index:100;display:none;align-items:center;justify-content:center;padding:24px;}
+  .optin-modal{position:fixed;inset:0;z-index:9999;display:none;align-items:center;justify-content:center;padding:24px;}
   .optin-modal.is-open{display:flex;}
   .optin-modal .optin-backdrop{position:absolute;inset:0;background:rgba(20,39,28,.62);}
   .optin-modal .optin-panel{position:relative;z-index:1;width:100%;max-width:480px;max-height:min(90vh,720px);overflow:auto;background:var(--panel);border-radius:14px;padding:clamp(28px,4vw,40px);}
@@ -131,13 +131,7 @@
   .optin-modal .optin-close:hover{background:rgba(20,39,28,.08);}
   .optin-modal .fh{font-family:var(--serif);font-weight:400;font-size:clamp(26px,2.6vw,34px);line-height:1.1;padding-right:28px;}
   .optin-modal .fd{font-size:14.5px;line-height:1.7;color:#4A4034;margin-top:12px;margin-bottom:22px;}
-  body.optin-open{
-    overflow:hidden;
-    position:fixed;
-    left:0;
-    right:0;
-    width:100%;
-  }
+  html.optin-open,body.optin-open{overflow:hidden;}
   /* finale */
   .finale{background:var(--green);color:#fff;padding:84px 32px 70px;text-align:center;background-image:radial-gradient(circle at 30% 20%,rgba(228,205,143,.06),transparent 45%),radial-gradient(circle at 70% 80%,rgba(255,255,255,.04),transparent 45%);}
   .finale .kick{font-weight:700;font-size:12px;letter-spacing:.12em;color:var(--butter);text-transform:uppercase;}
@@ -635,27 +629,33 @@
   var done = document.querySelector('[data-done]');
   var phoneRow = document.querySelector('[data-phone-row]');
   var phoneField = phoneRow ? initCountryPhone(phoneRow) : null;
-  var optinScrollY = 0;
+
+  if (modal && modal.parentElement !== document.body) {
+    document.body.appendChild(modal);
+  }
 
   function openOptin() {
-    if (!modal || modal.classList.contains('is-open')) return;
-    optinScrollY = window.scrollY || window.pageYOffset || 0;
+    if (!modal) return;
+    if (modal.parentElement !== document.body) {
+      document.body.appendChild(modal);
+    }
     modal.classList.add('is-open');
     modal.setAttribute('aria-hidden', 'false');
+    document.documentElement.classList.add('optin-open');
     document.body.classList.add('optin-open');
-    document.body.style.top = '-' + optinScrollY + 'px';
-    var first = form && form.querySelector('#r-name');
-    if (first) first.focus({ preventScroll: true });
+    window.requestAnimationFrame(function(){
+      var first = form && form.querySelector('#r-name');
+      if (first) first.focus({ preventScroll: true });
+    });
   }
 
   function closeOptin() {
-    if (!modal || !modal.classList.contains('is-open')) return;
+    if (!modal) return;
     if (phoneField) phoneField.closeMenu();
     modal.classList.remove('is-open');
     modal.setAttribute('aria-hidden', 'true');
+    document.documentElement.classList.remove('optin-open');
     document.body.classList.remove('optin-open');
-    document.body.style.top = '';
-    window.scrollTo(0, optinScrollY);
   }
 
   document.querySelectorAll('[data-open-optin]').forEach(function(el){

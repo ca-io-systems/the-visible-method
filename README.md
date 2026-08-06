@@ -17,9 +17,10 @@ We need a fast, ownable webinar front-end (GitHub → Vercel) instead of editing
 | `/waitlist` | `content/waitlist.html` | Organic waitlist opt-in |
 | `/waitlist/wine` | `content/waitlist-wine.html` | Alternate waitlist creative |
 | `/waitlist/thank-you` | `content/waitlist-thank-you.html` | Waitlist confirmation |
-| `/workshop` | `content/workshop.html` | Workshop registration |
-| `/workshop/confirmation` | `content/workshop-confirmation.html` | Post-reg: group + **calendar** + email |
-| `/studio-session` | `content/studio-session.html` | Studio / VIP-adjacent page |
+| `/workshop` | `content/workshop.html` | Workshop registration → GHL webhook |
+| `/studio-session` | `content/studio-session.html` | $47 upsell (Whop via `CHECKOUT_URL`) |
+| `/studio-session/thank-you` | `content/studio-session-thank-you.html` | Post-purchase: WA + dual calendar |
+| `/workshop/confirmation` | `content/workshop-confirmation.html` | Free path skip: group + calendar |
 
 Forms POST to `app/api/submit` → `GHL_WEBHOOK_URL`.
 
@@ -38,7 +39,14 @@ On the page:
 - **Apple / Outlook** → `/api/calendar`
 - **Google** / **Outlook.com** → deep links (no vendor JS)
 
-Optional: set `WORKSHOP_ZOOM_URL` so the calendar event location/description includes Zoom.
+Optional: set `WORKSHOP_ZOOM_URL` so calendar events include Zoom.
+
+Studio thank-you calendar:
+
+- Google / Outlook pills for masterclass (Aug 13) and studio (Aug 17)
+- Apple → `/api/calendar?event=both` (one `.ics` with both events)
+
+Set Whop success URL to `/studio-session/thank-you` (or your production domain equivalent).
 
 ## Emails / SMS
 

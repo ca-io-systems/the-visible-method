@@ -286,13 +286,17 @@
   <div class="form-card">
     <div>
       <div class="fh">Save your seat for August 13.</div>
-      <p class="fd">The room is capped so everyone gets seen. Name, email, phone — that's it. I'll text you the morning we go live.</p>
+      <p class="fd">The room is capped so everyone gets seen. First name, last name, email, phone — that's it. I'll text you the morning we go live.</p>
     </div>
     <div>
       <form data-form novalidate>
         <div class="field">
           <label for="r-name">First name</label>
           <input id="r-name" name="name" type="text" placeholder="Your first name" autocomplete="given-name" required>
+        </div>
+        <div class="field">
+          <label for="r-last">Last name</label>
+          <input id="r-last" name="lastName" type="text" placeholder="Your last name" autocomplete="family-name" required>
         </div>
         <div class="field">
           <label for="r-email">Email</label>
@@ -315,7 +319,7 @@
 <section class="finale">
   <div style="max-width:900px;margin:0 auto;">
     <div class="kick">90 Minutes That Change How You Show Up</div>
-    <h2 class="h-bold">LIVE ON<br>AUGUST 11.</h2>
+    <h2 class="h-bold">LIVE ON<br>AUGUST 13.</h2>
     <p class="sub">Jamie walks you through the three stories that make the internet finally see what everyone who meets you already does.</p>
     <div class="bigcd">
       <div><div class="n" data-d>00</div><div class="l">DAYS</div></div><div class="c">:</div>
@@ -346,16 +350,15 @@
     return new URLSearchParams(window.location.search).get(key) || '';
   }
 
-  function buildSubmitPayload(firstName, email, phone) {
+  function buildSubmitPayload(firstName, lastName, email, phone) {
     var payload = {
       firstName: firstName,
+      lastName: lastName,
       email: email,
       phone: phone,
       source: 'workshop',
       optin_url: window.location.href,
     };
-    var lastName = queryParam('lastName');
-    if (lastName) payload.lastName = lastName;
     var hyrosTag = queryParam('hyros_tag') || queryParam('ht');
     if (hyrosTag) payload.hyros_tag = hyrosTag;
     var revenue = queryParam('revenue');
@@ -397,6 +400,7 @@
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(buildSubmitPayload(
           form.querySelector('#r-name').value.trim(),
+          form.querySelector('#r-last').value.trim(),
           form.querySelector('#r-email').value.trim(),
           form.querySelector('#r-phone').value.trim(),
         )),

@@ -1,0 +1,287 @@
+<title>The Visible Method · You're in</title>
+
+<!--
+  THE VISIBLE METHOD  ·  STUDIO SESSION THANK YOU
+  Post-purchase confirmation after Whop / CHECKOUT_URL success.
+  Mirror of go.thevisiblemethod.com/studio-session-thank-you-page
+-->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --green:#14271C;
+    --paper:#FFFFFF;
+    --ink:#2B1E16;
+    --butter:#E4CD8F;
+    --wine:#4E1D1B;
+    --gold:#C9A96A;
+
+    --display:"Playfair Display",Georgia,"Times New Roman",serif;
+    --sans:-apple-system,BlinkMacSystemFont,"Segoe UI","Helvetica Neue",Arial,sans-serif;
+
+    --pad:clamp(20px,5vw,64px);
+    --maxw:880px;
+  }
+
+  html,body{background:#FFFFFF;}
+  html{scroll-behavior:smooth;}
+  @media (prefers-reduced-motion:reduce){ html{scroll-behavior:auto;} }
+
+  .vm{
+    background:#FFFFFF;color:var(--ink);
+    font-family:var(--sans);font-size:18px;line-height:1.66;
+    -webkit-font-smoothing:antialiased;overflow-x:hidden;
+    --fg:var(--ink);--fg-dim:rgba(43,30,22,.95);--fg-faint:rgba(43,30,22,.72);
+    --line:rgba(43,30,22,.16);
+  }
+  .vm *{box-sizing:border-box;}
+  .vm p{margin:0;}
+  .vm h1,.vm h2{margin:0;font-weight:500;text-wrap:balance;}
+
+  .wrap{max-width:var(--maxw);margin:0 auto;padding-left:var(--pad);padding-right:var(--pad);}
+  .display{font-family:var(--display);font-weight:500;line-height:1.02;letter-spacing:-.015em;}
+  .display em{font-style:italic;}
+
+  .top{text-align:center;padding:clamp(28px,4vw,48px) 0 0;}
+  .mark{font-size:11.5px;letter-spacing:.26em;text-transform:uppercase;font-weight:700;color:var(--fg-dim);}
+
+  .check{
+    width:44px;height:44px;margin:clamp(22px,3vw,32px) auto 0;border-radius:50%;
+    background:var(--green);color:#fff;display:flex;align-items:center;justify-content:center;
+    font-size:20px;line-height:1;
+  }
+  .kicker{
+    margin-top:16px;font-size:12px;letter-spacing:.2em;text-transform:uppercase;
+    font-weight:700;color:var(--wine);
+  }
+  .hero h1{
+    font-family:var(--display);font-size:clamp(34px,5.2vw,56px);line-height:1.06;
+    margin-top:14px;color:var(--ink);
+  }
+  .hero h1 em{font-style:italic;}
+  .hero .sub{
+    margin:16px auto 0;max-width:52ch;font-size:15.5px;line-height:1.7;color:rgba(43,30,22,.7);
+  }
+
+  /* ---------- ticket ---------- */
+  .ticket{
+    margin:clamp(28px,4vw,42px) auto 0;max-width:720px;
+    border:1px solid rgba(43,30,22,.35);position:relative;
+    display:grid;grid-template-columns:minmax(140px,.9fr) 1.35fr;
+    background:#fff;text-align:left;overflow:hidden;
+  }
+  .ticket::before{content:"";position:absolute;inset:7px;border:3px double var(--gold);pointer-events:none;z-index:1;}
+  .ticket::after{content:"";position:absolute;inset:14px;border:1px solid rgba(201,169,106,.45);pointer-events:none;z-index:1;}
+  .ticket > *{position:relative;z-index:2;}
+  .ticket .shot{
+    min-height:220px;background:var(--green);overflow:hidden;
+  }
+  .ticket .shot img{width:100%;height:100%;object-fit:cover;display:block;}
+  .ticket .meta{padding:clamp(22px,3vw,34px) clamp(20px,2.6vw,30px);}
+  .ticket .admit{font-size:10px;letter-spacing:.16em;text-transform:uppercase;font-weight:700;color:var(--fg-faint);}
+  .ticket h2{font-family:var(--display);font-size:clamp(24px,3vw,32px);line-height:1.1;margin-top:10px;}
+  .rows{margin-top:18px;display:grid;gap:12px;}
+  .row{display:grid;grid-template-columns:7.5rem 1fr;gap:10px;align-items:baseline;}
+  .row .lab{font-size:10px;letter-spacing:.16em;text-transform:uppercase;font-weight:700;color:var(--fg-faint);}
+  .row .val{font-size:14.5px;font-weight:600;color:var(--ink);line-height:1.35;}
+  .ticket .sent{
+    margin-top:18px;padding-top:14px;border-top:1px solid var(--line);
+    font-size:10px;letter-spacing:.14em;text-transform:uppercase;font-weight:700;color:var(--fg-faint);
+  }
+
+  /* ---------- steps ---------- */
+  .steps-sec{padding:clamp(44px,7vw,72px) 0 clamp(28px,4vw,40px);text-align:center;}
+  .eyebrow{font-size:11.5px;letter-spacing:.22em;text-transform:uppercase;font-weight:700;color:var(--wine);}
+  .steps-sec h2{font-family:var(--display);font-size:clamp(28px,3.8vw,44px);line-height:1.06;margin-top:12px;}
+  .steps{margin-top:clamp(28px,4vw,40px);display:grid;gap:14px;text-align:left;}
+  .step{
+    display:grid;grid-template-columns:auto 1fr auto;gap:clamp(14px,2.4vw,28px);align-items:center;
+    border:1px solid var(--line);padding:clamp(18px,2.4vw,26px);background:#fff;
+  }
+  .step .no{font-family:var(--display);font-size:clamp(28px,3.4vw,40px);line-height:1;color:var(--wine);min-width:52px;}
+  .step .txt .t{font-weight:700;font-size:clamp(15px,1.4vw,18px);}
+  .step .txt .d{font-size:14.5px;color:var(--fg-dim);margin-top:5px;line-height:1.55;max-width:42ch;}
+
+  .step-cta{
+    display:inline-flex;align-items:center;justify-content:center;gap:9px;white-space:nowrap;
+    background:var(--green);color:#fff;text-decoration:none;
+    font-family:var(--sans);font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
+    padding:16px 26px;min-height:52px;border:0;border-radius:999px;cursor:pointer;
+    transition:background .25s ease,transform .25s ease;
+  }
+  .step-cta:hover{background:#1F3A2B;transform:translateY(-1px);}
+  .step-cta:focus-visible{outline:2px solid var(--green);outline-offset:3px;}
+
+  .cal-stack{display:grid;gap:10px;min-width:min(260px,100%);}
+  .cal-row{display:grid;grid-template-columns:4.2rem 1fr;gap:8px 10px;align-items:center;}
+  .cal-row .lab{font-size:10px;letter-spacing:.14em;text-transform:uppercase;font-weight:700;color:var(--fg-faint);}
+  .cal-pills{display:flex;flex-wrap:wrap;gap:8px;}
+  .pill{
+    display:inline-flex;align-items:center;justify-content:center;
+    border:1px solid rgba(43,30,22,.28);border-radius:999px;padding:10px 14px;
+    font-size:10px;letter-spacing:.1em;text-transform:uppercase;font-weight:700;
+    color:var(--ink);text-decoration:none;background:#fff;
+    transition:background .2s ease,border-color .2s ease;
+  }
+  .pill:hover{background:rgba(20,39,28,.05);border-color:rgba(43,30,22,.45);}
+
+  .mail-pills{display:flex;flex-wrap:wrap;gap:8px;justify-content:flex-end;}
+
+  .note{
+    margin:clamp(36px,5vw,56px) auto 0;max-width:46ch;text-align:center;
+  }
+  .note .k{font-size:11.5px;letter-spacing:.2em;text-transform:uppercase;font-weight:700;color:var(--wine);}
+  .note p{margin-top:14px;font-size:15.5px;line-height:1.7;color:var(--fg-dim);}
+  .note .sign{
+    margin-top:18px;font-family:var(--display);font-style:italic;font-size:28px;color:var(--ink);
+  }
+
+  .close{padding:clamp(28px,4vw,40px) 0 clamp(20px,3vw,28px);text-align:center;}
+  .close .lede{margin:0 auto;max-width:44ch;font-size:15.5px;line-height:1.7;color:var(--fg-dim);}
+  .close .cta{
+    display:inline-flex;align-items:center;justify-content:center;gap:10px;margin-top:22px;
+    background:var(--green);color:#fff;text-decoration:none;
+    font-family:var(--sans);font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;
+    padding:18px 34px;min-height:56px;border:0;border-radius:999px;
+    transition:background .25s ease,transform .25s ease;
+  }
+  .close .cta:hover{background:#1F3A2B;transform:translateY(-1px);}
+
+  footer.vm-foot{margin-top:clamp(36px,5vw,56px);padding:0 0 56px;text-align:center;display:grid;gap:18px;justify-items:center;}
+  .foot-rule{width:100%;display:flex;align-items:center;gap:18px;margin-bottom:10px;}
+  .foot-rule::before,.foot-rule::after{content:"";flex:1;height:1px;background:rgba(43,30,22,.2);}
+  .foot-rule span{font-family:var(--display);font-style:italic;font-size:15px;color:var(--gold);letter-spacing:.04em;}
+  .foot-mark{font-family:var(--display);font-size:clamp(20px,2vw,26px);letter-spacing:.02em;}
+  .disclaim{margin:0 auto;font-size:13px;line-height:1.75;color:rgba(43,30,22,.6);max-width:72ch;}
+
+  @media (prefers-reduced-motion:reduce){
+    .step-cta,.pill,.close .cta{transition:none;}
+  }
+  @media (max-width:720px){
+    .ticket{grid-template-columns:1fr;}
+    .ticket .shot{min-height:200px;max-height:240px;}
+    .step{grid-template-columns:auto 1fr;grid-row-gap:14px;}
+    .step .step-cta,.step .cal-stack,.step .mail-pills{grid-column:1 / -1;width:100%;}
+    .cal-row{grid-template-columns:1fr;}
+    .mail-pills{justify-content:flex-start;}
+    .close .cta{width:100%;}
+  }
+</style>
+
+<div class="vm">
+
+  <section class="top">
+    <div class="wrap hero">
+      <div class="mark">The Visible Method</div>
+      <div class="check" aria-hidden="true">&#10003;</div>
+      <div class="kicker">Payment confirmed</div>
+      <h1 class="display">Your seat in <em>The Studio Session</em> is booked.</h1>
+      <p class="sub">You're in both rooms now — the masterclass on August 13 and the smaller Studio Session on August 17. Three things to do before then, and they take about a minute.</p>
+
+      <article class="ticket">
+        <div class="shot">
+          <img src="images/jamie-car.jpg" alt="Jamie Gabrielle">
+        </div>
+        <div class="meta">
+          <div class="admit">Admit one · Paid in full</div>
+          <h2>The Studio Session</h2>
+          <div class="rows">
+            <div class="row"><div class="lab">When</div><div class="val">Mon, August 17 · 1 PM PT / 4 PM ET</div></div>
+            <div class="row"><div class="lab">Where</div><div class="val">Live on Zoom</div></div>
+            <div class="row"><div class="lab">Also included</div><div class="val">The Masterclass · August 13</div></div>
+            <div class="row"><div class="lab">Paid</div><div class="val">$47.00 USD</div></div>
+          </div>
+          <div class="sent">Confirmation sent to your email</div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="steps-sec">
+    <div class="wrap">
+      <div class="eyebrow">Do these now</div>
+      <h2 class="display">Two minutes and you're set.</h2>
+
+      <div class="steps">
+        <div class="step">
+          <div class="no">01</div>
+          <div class="txt">
+            <div class="t">Join the WhatsApp group</div>
+            <div class="d">Every announcement goes here first — prep, timing changes, and the join links if email lets you down. This is the one that matters.</div>
+          </div>
+          <a class="step-cta" href="{{WHATSAPP_GROUP_URL}}" data-link="group">Join the group</a>
+        </div>
+
+        <div class="step">
+          <div class="no">02</div>
+          <div class="txt">
+            <div class="t">Save both dates</div>
+            <div class="d">Pick your calendar, then add each event. Both save with a reminder an hour before.</div>
+          </div>
+          <div class="cal-stack">
+            <div class="cal-row">
+              <div class="lab">Google</div>
+              <div class="cal-pills">
+                <a class="pill" href="{{CALENDAR_GOOGLE_URL}}" target="_blank" rel="noopener noreferrer">Masterclass · Aug 13</a>
+                <a class="pill" href="{{CALENDAR_STUDIO_GOOGLE_URL}}" target="_blank" rel="noopener noreferrer">Studio Session · Aug 17</a>
+              </div>
+            </div>
+            <div class="cal-row">
+              <div class="lab">Outlook</div>
+              <div class="cal-pills">
+                <a class="pill" href="{{CALENDAR_OUTLOOK_URL}}" target="_blank" rel="noopener noreferrer">Masterclass · Aug 13</a>
+                <a class="pill" href="{{CALENDAR_STUDIO_OUTLOOK_URL}}" target="_blank" rel="noopener noreferrer">Studio Session · Aug 17</a>
+              </div>
+            </div>
+            <div class="cal-row">
+              <div class="lab">Apple</div>
+              <div class="cal-pills">
+                <a class="pill" href="{{CALENDAR_BOTH_ICS_URL}}">Both events · one file</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="no">03</div>
+          <div class="txt">
+            <div class="t">Keep an eye on your email</div>
+            <div class="d">Your receipt is already there. The join links and prep notes come from the same address — star it so nothing gets buried.</div>
+          </div>
+          <div class="mail-pills">
+            <a class="pill" href="https://mail.google.com" target="_blank" rel="noopener noreferrer">Gmail</a>
+            <a class="pill" href="https://outlook.live.com/mail" target="_blank" rel="noopener noreferrer">Outlook</a>
+            <a class="pill" href="https://mail.yahoo.com" target="_blank" rel="noopener noreferrer">Yahoo</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="close">
+    <div class="wrap">
+      <p class="lede">The Studio Session is the small room. Fewer people, cameras on, and time to actually work on your own content instead of watching someone else's. Come with one thing you've been avoiding posting — that's the material.</p>
+      <a class="cta" href="{{WHATSAPP_GROUP_URL}}" data-link="group">Say hi in the group &#8594;</a>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="note">
+        <div class="k">One last thing</div>
+        <p>If your receipt hasn't landed in ten minutes, check spam, then message me in the group and I'll sort it out. See you on the 13th.</p>
+        <div class="sign">Jamie</div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="vm-foot wrap">
+    <div class="foot-rule" aria-hidden="true"><span>see you in both rooms</span></div>
+    <div class="foot-mark">The Visible Method</div>
+    <p class="disclaim">Hosted by Jamie Gabrielle. This site is not part of the Instagram or Facebook websites, or Meta Platforms, Inc. It is not endorsed by Meta in any way. Any results shared are Jamie's own or those of her clients and are not a promise of your results.</p>
+  </footer>
+
+</div>

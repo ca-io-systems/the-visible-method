@@ -104,23 +104,11 @@ export function buildCalendarLinks(event: CalendarEventInput): CalendarLinks {
   }
 }
 
-/**
- * Builds a valid iCalendar (.ics) document for Apple Calendar / Outlook desktop.
- *
- * @param event - Calendar event fields
- * @returns ICS file body (CRLF line endings)
- */
-export function buildIcs(event: CalendarEventInput): string {
+function buildVeventLines(event: CalendarEventInput, now: string): string[] {
   const uid =
     event.uid ||
-    `visible-method-workshop-${toUtcCompact(event.start)}@the-visible-method`
-  const now = toUtcCompact(new Date())
+    `visible-method-${toUtcCompact(event.start)}@the-visible-method`
   const lines = [
-    "BEGIN:VCALENDAR",
-    "VERSION:2.0",
-    "PRODID:-//The Visible Method//Workshop//EN",
-    "CALSCALE:GREGORIAN",
-    "METHOD:PUBLISH",
     "BEGIN:VEVENT",
     `UID:${uid}`,
     `DTSTAMP:${now}`,
@@ -137,6 +125,38 @@ export function buildIcs(event: CalendarEventInput): string {
   if (event.url) {
     lines.push(`URL:${icsEscape(event.url)}`)
   }
-  lines.push("END:VEVENT", "END:VCALENDAR")
+  lines.push("END:VEVENT")
+  return lines
+}
+
+/**
+ * Builds a valid iCalendar (.ics) document for Apple Calendar / Outlook desktop.
+ *
+ * @param event - Calendar event fields
+ * @returns ICS file body (CRLF line endings)
+ */
+export function buildIcs(event: CalendarEventInput): string {
+  return buildMultiEventIcs([event])
+}
+
+/**
+ * Builds an iCalendar (.ics) document with one or more VEVENT blocks.
+ *
+ * @param events - Calendar events to include
+ * @returns ICS file body (CRLF line endings)
+ */
+export function buildMultiEventIcs(events: CalendarEventInput[]): string {
+  const now = toUtcCompact(new Date())
+  const lines = [
+    "BEGIN:VCALENDAR",
+    "VERSION:2.0",
+    "PRODID:-//The Visible Method//Events//EN",
+    "CALSCALE:GREGORIAN",
+    "METHOD:PUBLISH",
+  ]
+  for (const event of events) {
+    lines.push(...buildVeventLines(event, now))
+  }
+  lines.push("END:VCALENDAR")
   return lines.map(foldIcsLine).join("\r\n") + "\r\n"
 }

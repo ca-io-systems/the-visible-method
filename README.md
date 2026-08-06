@@ -30,7 +30,7 @@ Step 2 on `/workshop/confirmation` is the no-show reducer. Same job products lik
 
 We do it ourselves:
 
-- `lib/workshop-event.ts` — canonical event (Aug 13, 2026 · 12:00–1:30 PM PT)
+- `lib/workshop-event.ts` — canonical event (Aug 13, 2026 · 1:00–3:00 PM PT / 4:00–6:00 PM ET)
 - `lib/add-to-calendar.ts` — Google / Outlook.com URLs + `.ics` builder
 - `GET /api/calendar` — downloads `the-visible-method-workshop.ics` (Apple Calendar / Outlook desktop)
 

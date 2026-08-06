@@ -50,7 +50,7 @@ Set Whop success URL to `/studio-session/thank-you` (or your production domain e
 
 ## Emails / SMS
 
-Pre-webby HTML + SMS drafts live under `emails/webby/`. Push script: `scripts/push-pre-webby.ts`. Reminders stay in GHL; this repo does not replace AddEvent’s RSVP email product.
+Pre-webby HTML + SMS drafts live under `emails/webby/`. Push script: `scripts/push-pre-webby.ts`. Reminders stay in GHL.
 
 ## Local
 
@@ -62,7 +62,8 @@ bun run dev
 Copy `.env.example` → `.env.local` and fill:
 
 - `GHL_WEBHOOK_URL`
-- `WHATSAPP_GROUP_URL`
+- `WHATSAPP_GROUP_URL` (waitlist + free workshop confirmation)
+- `WHATSAPP_GROUP_VIP_URL` (studio-session thank-you / paid buyers)
 - `CHECKOUT_URL` (if used)
 - `WORKSHOP_ZOOM_URL` (optional, for calendar)
 

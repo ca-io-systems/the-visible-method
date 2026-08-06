@@ -2,7 +2,11 @@ import { buildCalendarLinks } from "./add-to-calendar"
 import { getStudioSessionEvent } from "./studio-session-event"
 import { getWorkshopEvent } from "./workshop-event"
 
-const FUNNEL_ENV_KEYS = ["WHATSAPP_GROUP_URL", "CHECKOUT_URL"] as const
+const FUNNEL_ENV_KEYS = [
+  "WHATSAPP_GROUP_URL",
+  "WHATSAPP_GROUP_VIP_URL",
+  "CHECKOUT_URL",
+] as const
 
 /**
  * Replaces {{ENV_KEY}} placeholders in funnel HTML with server env values

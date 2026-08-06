@@ -84,14 +84,11 @@
     }
   .video .frame{
     position:absolute;z-index:1;left:16.9%;right:17.6%;top:20.3%;bottom:22.5%;
-    background:var(--green);display:flex;align-items:center;justify-content:center;
+    background:var(--green);overflow:hidden;
   }
-  .video .ring{width:74px;height:74px;border-radius:50%;border:1px solid rgba(228,205,143,.7);
-               display:flex;align-items:center;justify-content:center;}
-  .video .tri{width:0;height:0;margin-left:6px;border-left:18px solid rgba(228,205,143,.85);
-              border-top:11px solid transparent;border-bottom:11px solid transparent;}
-  .video .ph{position:absolute;bottom:16px;left:0;right:0;text-align:center;
-             font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.55);}
+  .video .frame video{
+    width:100%;height:100%;object-fit:cover;display:block;background:#000;
+  }
 
   /* ---------- choice ---------- */
   .choice{margin-top:18px;display:grid;gap:12px;justify-items:center;}
@@ -294,14 +291,22 @@
       <div class="progress" aria-hidden="true"><div class="bar"></div></div>
       <div class="progress-note">Almost there</div>
 
-      <!-- video -->
+      <!-- video — plays after /workshop registration -->
       <div class="video">
         <div class="cue">&#128266; A quick note from me. Make sure your sound is on.</div>
         <div class="stagewrap">
           <img class="goldimg" src="images/gold-frame.png" alt="">
           <div class="frame">
-            <div class="ring"><div class="tri"></div></div>
-            <div class="ph">Jamie's 60 to 90 second invite to session two</div>
+            <video
+              controls
+              playsinline
+              preload="metadata"
+              controlsList="nodownload"
+              title="A quick note from Jamie"
+            >
+              <source src="https://assets.cdn.filesafe.space/GoP9PdxIiTzltzuaA8Vg/media/6a749d86a36de46d6a536d67.mov" type="video/mp4">
+              <source src="https://assets.cdn.filesafe.space/GoP9PdxIiTzltzuaA8Vg/media/6a749d86a36de46d6a536d67.mov" type="video/quicktime">
+            </video>
           </div>
         </div>
       </div>

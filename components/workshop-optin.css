@@ -1,0 +1,297 @@
+.vm-optin-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+.vm-optin-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(20, 39, 28, 0.62);
+}
+
+.vm-optin-panel {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 480px;
+  max-height: min(90vh, 720px);
+  overflow: auto;
+  background: #ececec;
+  border-radius: 14px;
+  padding: clamp(28px, 4vw, 40px);
+  color: #2b1e16;
+  font-family: Archivo, system-ui, sans-serif;
+}
+
+.vm-optin-close {
+  position: absolute;
+  top: 14px;
+  right: 16px;
+  width: 36px;
+  height: 36px;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  color: #2b1e16;
+  font-size: 22px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.vm-optin-close:hover {
+  background: rgba(20, 39, 28, 0.08);
+}
+
+.vm-optin-title {
+  font-family: "Playfair Display", Georgia, serif;
+  font-weight: 400;
+  font-size: clamp(26px, 2.6vw, 34px);
+  line-height: 1.1;
+  padding-right: 28px;
+}
+
+.vm-optin-copy {
+  font-size: 14.5px;
+  line-height: 1.7;
+  color: #4a4034;
+  margin: 12px 0 22px;
+}
+
+.vm-optin-form {
+  display: grid;
+  gap: 14px;
+}
+
+.vm-optin-field {
+  display: grid;
+  gap: 7px;
+}
+
+.vm-optin-field label {
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #8a8172;
+  font-weight: 700;
+}
+
+.vm-optin-field input[type="text"],
+.vm-optin-field input[type="email"] {
+  width: 100%;
+  background: #fff;
+  border: 1px solid #d2d2d2;
+  border-radius: 10px;
+  color: #2b1e16;
+  font-family: inherit;
+  font-size: 15px;
+  padding: 15px 16px;
+}
+
+.vm-optin-field input[type="text"]:focus,
+.vm-optin-field input[type="email"]:focus,
+.vm-phone-national:focus {
+  outline: none;
+  border-color: #14271c;
+}
+
+.vm-optin-field input.is-invalid,
+.vm-phone-input.is-invalid .vm-phone-cc,
+.vm-phone-input.is-invalid .vm-phone-national {
+  border-color: #b4462f;
+}
+
+.vm-optin-submit {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  background: #14271c;
+  color: #fff;
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  padding: 17px 34px;
+  border-radius: 999px;
+  border: 0;
+  cursor: pointer;
+}
+
+.vm-optin-submit:hover {
+  opacity: 0.85;
+}
+
+.vm-optin-submit:disabled {
+  opacity: 0.65;
+  cursor: wait;
+}
+
+.vm-optin-error {
+  font-size: 13px;
+  color: #b4462f;
+  line-height: 1.5;
+}
+
+html.optin-open,
+body.optin-open {
+  overflow: hidden;
+}
+
+/* Phone input — matches Visible Method form fields */
+.vm-phone-input {
+  display: flex;
+  width: 100%;
+  align-items: stretch;
+}
+
+.vm-phone-input .PhoneInputCountryIcon,
+.vm-phone-input .PhoneInputCountrySelectArrow {
+  display: none;
+}
+
+.vm-phone-input:focus-within .vm-phone-cc,
+.vm-phone-input:focus-within .vm-phone-national {
+  border-color: #14271c;
+}
+
+.vm-phone-cc {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0 12px 0 14px;
+  background: #fff;
+  border: 1px solid #d2d2d2;
+  border-right: 0;
+  border-radius: 10px 0 0 10px;
+  color: #2b1e16;
+  font-family: inherit;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.vm-phone-cc:hover {
+  background: #f7f7f7;
+}
+
+.vm-phone-flag {
+  display: flex;
+  width: 22px;
+  height: 16px;
+  overflow: hidden;
+  border-radius: 2px;
+  background: #ececec;
+  flex: none;
+}
+
+.vm-phone-flag svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.vm-phone-dial {
+  font-variant-numeric: tabular-nums;
+  font-weight: 600;
+}
+
+.vm-phone-caret {
+  font-size: 10px;
+  color: #8a8172;
+}
+
+.vm-phone-national {
+  flex: 1;
+  min-width: 0;
+  width: 100%;
+  background: #fff;
+  border: 1px solid #d2d2d2;
+  border-radius: 0 10px 10px 0;
+  color: #2b1e16;
+  font-family: inherit;
+  font-size: 15px;
+  padding: 15px 16px;
+}
+
+.vm-phone-menu {
+  position: fixed;
+  z-index: 10000;
+  background: #fff;
+  border: 1px solid #d2d2d2;
+  border-radius: 10px;
+  max-height: 280px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 12px 32px rgba(43, 30, 22, 0.14);
+}
+
+.vm-phone-search {
+  width: 100%;
+  border: 0;
+  border-bottom: 1px solid #e5e5e5;
+  border-radius: 10px 10px 0 0;
+  padding: 12px 14px;
+  font-family: inherit;
+  font-size: 14px;
+  color: #2b1e16;
+}
+
+.vm-phone-search:focus {
+  outline: none;
+}
+
+.vm-phone-options {
+  overflow: auto;
+  max-height: 230px;
+}
+
+.vm-phone-option {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  padding: 11px 14px;
+  border: 0;
+  background: transparent;
+  color: #2b1e16;
+  font-family: inherit;
+  font-size: 14px;
+  text-align: left;
+  cursor: pointer;
+}
+
+.vm-phone-option:hover,
+.vm-phone-option.is-active {
+  background: #f3f3f3;
+}
+
+.vm-phone-name {
+  flex: 1;
+}
+
+.vm-phone-option-dial {
+  color: #8a8172;
+  font-variant-numeric: tabular-nums;
+}
+
+.vm-phone-empty {
+  padding: 16px;
+  color: #8a8172;
+  font-size: 14px;
+}
+
+@media (max-width: 640px) {
+  .vm-optin-modal {
+    padding: 16px;
+  }
+
+  .vm-optin-panel {
+    padding: 24px 20px;
+  }
+}

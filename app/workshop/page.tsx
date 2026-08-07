@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { HtmlPage } from "@/components/HtmlPage";
+import { WorkshopOptInModal } from "@/components/WorkshopOptInModal";
 import { loadPage } from "@/lib/load-page";
 
 export const metadata: Metadata = {
@@ -7,5 +8,10 @@ export const metadata: Metadata = {
 };
 
 export default function WorkshopPage() {
-  return <HtmlPage html={loadPage("workshop")} />;
+  return (
+    <>
+      <HtmlPage html={loadPage("workshop")} />
+      <WorkshopOptInModal />
+    </>
+  );
 }

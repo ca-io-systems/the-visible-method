@@ -3,7 +3,7 @@ import "./globals.css";
 
 const siteUrl = "https://masterclass.thevisiblemethod.com";
 const ogImage = {
-  url: "/images/og-workshop.png",
+  url: "/images/og-workshop-v2.png",
   width: 1200,
   height: 630,
   alt: "Free Live Workshop · The Visible Method",
